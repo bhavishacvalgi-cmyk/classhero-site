@@ -8,8 +8,11 @@ const d = await b.newPage({ viewport: { width: 1440, height: 900 } });
 d.on('pageerror', e => errs.push(String(e))); d.on('console', m => m.type() === 'error' && errs.push(m.text()));
 await d.goto(url, { waitUntil: 'networkidle' }); await d.waitForTimeout(1500);
 await d.screenshot({ path: `${out}/desk-01-hero.png` });
-await d.evaluate(() => document.querySelector('.proof').scrollIntoView()); await d.waitForTimeout(400);
-await d.screenshot({ path: `${out}/desk-02-proof.png` });
+for (const f of [0.05, 0.3, 0.45, 0.62, 0.8, 0.97]) {
+  await d.evaluate(f => { const t = document.querySelector('.grades-track'); const top = t.getBoundingClientRect().top + scrollY - 72; scrollTo(0, top + (t.offsetHeight - innerHeight + 72) * f); }, f);
+  await d.waitForTimeout(1400);
+  await d.screenshot({ path: `${out}/desk-02-grades-${String(Math.round(f*100)).padStart(2,'0')}.png` });
+}
 for (const i of [0, 1, 2]) {
   await d.evaluate(i => { const t = document.querySelector('.steps-track'); const top = t.getBoundingClientRect().top + scrollY - 72; scrollTo(0, top + (t.offsetHeight - innerHeight) * ((i + 0.5) / 3)); }, i);
   await d.waitForTimeout(1200);

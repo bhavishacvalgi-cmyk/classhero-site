@@ -35,7 +35,7 @@ Rules:
 - **Sora** 600 (display, headlines; -0.025 to -0.04em tracking; line height 1.02-1.08) and 700 (wordmark only).
 - **Figtree** 400/500/600 (text; line height 1.55; measure 45-65ch).
 - Both self-hosted as woff2 in `site/fonts/`, latin subset, `font-display: swap`, preloaded. Inter is retired: it was half of why the draft looked generated.
-- **Scale** (fluid `clamp()`, exact at 390 and 1440): xs 13 · sm 15 · base 16→18 · md 18→20 · lg 21→25 · xl 24→31 · 2xl 28→39 · 3xl 32→49 · 4xl 38→64. The wordmark is fixed at 22 (19 on mobile).
+- **Scale** (fluid `clamp()`, exact at 390 and 1440): xs 13 · sm 15 · base 16→18 · md 18→20 · lg 21→25 · xl 24→31 · 2xl 28→39 · 3xl 32→49 · 4xl 38→64 · stat 72→128 (the 95% only). The wordmark is fixed at 22 (19 on mobile).
 
 ## Space, shape, depth
 - Spacing: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128. Sections 96 top and bottom on desktop, 64 on mobile. Gutters 24 / 40 / 64.
@@ -72,11 +72,11 @@ Easing is `cubic-bezier(0.22, 1, 0.36, 1)` throughout. Only `transform`, `opacit
 ```json audit-tokens
 {
   "spacing": [0, 1, 2, 3, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
-  "fontSizesPx": { "min390": [13, 15, 16, 18, 19, 21, 24, 28, 32, 38], "max1440": [13, 15, 18, 20, 22, 25, 31, 39, 49, 64] },
+  "fontSizesPx": { "min390": [11, 13, 15, 16, 18, 19, 21, 24, 28, 32, 38, 72], "max1440": [13, 15, 18, 20, 22, 25, 31, 39, 49, 64, 128] },
   "fontSizeTolerancePx": 1.5,
   "maxFamilies": 2,
   "maxWeights": 4,
   "maxDeadGapShare": 0.45,
-  "intentionalEmptySelectors": ["#how-it-works", ".steps-track", ".steps-sentinels"]
+  "intentionalEmptySelectors": ["#how-it-works", ".steps-track", ".steps-sentinels", ".grades", ".grades-track"]
 }
 ```

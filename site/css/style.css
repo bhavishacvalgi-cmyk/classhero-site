@@ -132,9 +132,9 @@ a { color: var(--blue-600); text-underline-offset: 3px; }
 @media (max-width: 767px) { .nav-links a:not(.btn) { display: none; } .nav .btn { font-size: var(--fs-xs); padding: var(--s-3); } .wordmark { font-size: 19px; } }
 
 /* ------------------------------------------------------------------ hero */
-.hero { padding: var(--s-8) 0 var(--s-9); }
+.hero { padding: var(--s-7) 0 var(--s-6); }
 .hero-grid { display: grid; grid-template-columns: 1fr; gap: var(--s-7); align-items: center; }
-.hero-copy { display: grid; gap: var(--s-5); max-width: 600px; }
+.hero-copy { display: grid; gap: var(--s-6); max-width: 600px; }
 .eyebrow { font: 600 var(--fs-xs)/1.2 var(--font-text); letter-spacing: 0.08em; text-transform: uppercase; color: var(--violet-600); }
 .hero h1 { font-size: var(--fs-4xl); letter-spacing: -0.035em; line-height: 1.02; }
 .hero h1 .tick { display: inline-block; width: 0.62em; height: 0.62em; margin-left: 0.08em; vertical-align: -0.02em; }
@@ -144,7 +144,7 @@ a { color: var(--blue-600); text-underline-offset: 3px; }
 .hero-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 30% 40%; border-radius: var(--r-box); background: var(--paper-2); }
 .hero-photo figcaption { margin-top: var(--s-3); font-size: var(--fs-xs); color: var(--ink-2); }
 @media (min-width: 900px) {
-  .hero { padding: var(--s-8) 0 var(--s-9); min-height: min(calc(100dvh - var(--nav-h)), 820px); display: flex; align-items: center; }
+  .hero { padding: var(--s-9) 0 var(--s-10); min-height: min(calc(100dvh - var(--nav-h)), 860px); display: flex; align-items: center; }
   .hero-grid { grid-template-columns: 1.1fr 0.9fr; gap: var(--s-8); }
   .hero-photo img { aspect-ratio: 5 / 6; }
 }
@@ -156,26 +156,65 @@ a { color: var(--blue-600); text-underline-offset: 3px; }
 }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 
-/* ------------------------------------------------------------------ proof */
-.proof { background: var(--paper-2); border-block: 1px solid var(--line); padding: var(--s-8) 0; }
-.proof-grid { display: grid; gap: var(--s-7); }
-.proof-lead { display: grid; gap: var(--s-3); max-width: 420px; }
-.proof-lead .big { font: 600 var(--fs-4xl)/1 var(--font-display); letter-spacing: -0.04em; color: var(--ink); }
-.proof-lead .big span { color: var(--violet); }
-.proof-lead p { color: var(--ink-2); font-size: var(--fs-md); }
-.moves { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-6); grid-template-columns: 1fr; }
-.move { display: grid; gap: var(--s-2); }
-.move .from-to { font: 600 var(--fs-2xl)/1 var(--font-display); letter-spacing: -0.03em; display: flex; align-items: center; gap: var(--s-3); white-space: nowrap; }
-.move .from-to .arrow { color: var(--blue); font-weight: 500; }
-.move .what { font-size: var(--fs-sm); color: var(--ink-2); max-width: 26ch; }
-@media (min-width: 640px) { .moves { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1000px) {
-  .proof-grid { grid-template-columns: 0.8fr 1.6fr; align-items: end; gap: var(--s-8); }
+/* ------------------------------------------------------------------ grades scene (signature)
+   Two exam papers get marked in the brand's violet pen: old grade struck through, new grade written and
+   circled, margin ticks drawn. Default CSS = the finished state (no JS, reduced motion, mobile).
+   With JS on wide screens the section pins and GSAP scrubs the marking to scroll. */
+.grades { padding: var(--s-8) 0 var(--s-9); overflow-x: clip; }
+@media (min-width: 900px) { .grades { padding: var(--s-10) 0; } }
+.grades-grid { display: grid; gap: var(--s-8); align-items: center; }
+.grades-stage { display: grid; perspective: 1600px; padding: var(--s-5) 0 var(--s-6); }
+.grades-stage .paper { grid-area: 1 / 1; width: min(78%, 360px); justify-self: center; }
+.paper.p2 { transform: translateX(-12%) rotate(-6deg) scale(0.94); }
+.paper.p1 { transform: translateX(10%) rotate(3deg) translateY(var(--s-5)); }
+@media (max-width: 899px) { .paper.p1 { z-index: 1; } }
+@media (max-width: 899px) { .paper-grade { font-size: var(--fs-lg); gap: var(--s-3); padding-right: var(--s-2); } .paper-subject { font-size: 11px; } .paper { padding: var(--s-5); } }
+.paper {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-ui);
+  box-shadow: 0 2px 4px rgb(22 30 47 / 0.04), 0 32px 64px -24px rgb(22 30 47 / 0.28);
+  padding: var(--s-5); aspect-ratio: 1 / 1.3; display: flex; flex-direction: column; gap: var(--s-3);
+  transform-style: preserve-3d; will-change: transform;
+}
+.paper-head { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s-3); padding-bottom: var(--s-3); border-bottom: 1px solid var(--line); }
+.paper-subject { min-width: 0; font: 600 var(--fs-xs)/1.3 var(--font-display); color: var(--ink); }
+.paper-grade { flex: none; display: flex; align-items: center; gap: var(--s-6); font: 600 var(--fs-3xl)/1 var(--font-display); letter-spacing: -0.03em; padding: var(--s-2) var(--s-3) 0 0; }
+.g-old { position: relative; color: var(--ink-2); }
+.g-new { position: relative; flex: none; white-space: nowrap; color: var(--violet-600); padding: 0 var(--s-2); min-width: 1.1em; text-align: center; }
+.strike, .ring { position: absolute; overflow: visible; pointer-events: none; max-width: none; }
+.strike { inset: 20% -20%; width: 140%; height: 60%; }
+.ring { inset: -40% -35%; width: 170%; height: 180%; }
+.strike path, .ring path { fill: none; stroke: var(--violet); stroke-width: 4; stroke-linecap: round; vector-effect: non-scaling-stroke; stroke-dasharray: 100; stroke-dashoffset: 0; }
+.paper-label { font-size: var(--fs-xs); color: var(--ink-2); }
+.paper-qs { list-style: none; margin: 0; padding: var(--s-3) 0 0; display: grid; gap: var(--s-4); flex: 1; align-content: space-evenly; }
+.paper-qs li { display: grid; grid-template-columns: 16px 1fr 20px; align-items: center; gap: var(--s-2); }
+.paper-qs .q { font-size: var(--fs-xs); color: var(--ink-2); }
+.paper-qs .ln { height: 10px; width: var(--w); border-radius: 999px; background: var(--paper-2); box-shadow: inset 0 0 0 1px var(--line); }
+.paper-qs .pt { width: 20px; height: 20px; overflow: visible; }
+.paper-qs .pt path { fill: none; stroke: var(--violet); stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; stroke-dashoffset: 0; }
+.grades-copy { display: grid; gap: var(--s-8); }
+.beat { display: grid; gap: var(--s-4); max-width: 520px; }
+.beat-title { font: 600 var(--fs-2xl)/1.12 var(--font-display); letter-spacing: -0.025em; text-wrap: balance; }
+.beat blockquote { margin: 0; font-size: var(--fs-md); color: var(--ink-2); max-width: 46ch; }
+.beat .cite { font-size: var(--fs-sm); font-weight: 600; color: var(--ink); }
+.beat .stat { font: 600 clamp(72px, 51.2px + 5.3333vw, 128px)/0.9 var(--font-display); letter-spacing: -0.05em; }
+.beat .stat .pct { color: var(--violet); }
+.beat .btn-quiet { justify-self: start; padding-left: 0; }
+@media (min-width: 900px) {
+  .grades-grid { grid-template-columns: 1fr 1fr; gap: var(--s-9); }
+}
+@media (min-width: 900px) {
+  .grades.is-pinned { padding: 0; }
+  .grades.is-pinned .grades-track { height: 360vh; }
+  .grades.is-pinned .grades-sticky { position: sticky; top: var(--nav-h); height: calc(100dvh - var(--nav-h)); display: flex; align-items: center; overflow: hidden; }
+  .grades.is-pinned .grades-stage { display: block; position: relative; height: min(72vh, 660px); }
+  .grades.is-pinned .paper { position: absolute; left: 50%; top: 50%; width: min(460px, 92%); padding: var(--s-6); margin: 0; transform: translate(-50%, -50%); }
+  .grades.is-pinned .grades-copy { display: grid; }
+  .grades.is-pinned .beat { grid-area: 1 / 1; }
 }
 
 /* ------------------------------------------------------------------ steps (three-step process) */
-.steps { padding: var(--s-9) 0; }
-.steps-head { display: grid; gap: var(--s-4); max-width: 720px; margin-bottom: var(--s-7); }
+.steps { padding: var(--s-10) 0; }
+.steps-head { display: grid; gap: var(--s-4); max-width: 720px; margin-bottom: var(--s-8); }
 .steps-head h2 { font-size: var(--fs-3xl); }
 .steps-head p { color: var(--ink-2); font-size: var(--fs-md); max-width: 52ch; }
 
@@ -219,18 +258,19 @@ a { color: var(--blue-600); text-underline-offset: 3px; }
 .plan-foot strong { color: var(--ink); font-weight: 600; }
 
 @media (min-width: 768px) {
-  .step { grid-template-columns: 1.05fr 0.95fr; padding: var(--s-7); gap: var(--s-7); }
+  .step { grid-template-columns: 1.05fr 0.95fr; padding: var(--s-8); gap: var(--s-8); }
 }
 
 /* Desktop: pinned scroll story (one step on screen at a time). Enabled by JS with .is-pinned. */
 @media (min-width: 1100px) {
-  .steps.is-pinned { padding: 0; }
+  .steps.is-pinned { padding: var(--s-9) 0 0; }
   .steps.is-pinned .steps-track { height: 300vh; position: relative; }
   .steps.is-pinned .steps-sticky {
     position: sticky; top: var(--nav-h); height: calc(100dvh - var(--nav-h));
     display: flex; flex-direction: column; justify-content: center; padding: var(--s-7) 0;
   }
   .steps.is-pinned .steps-head { margin-bottom: var(--s-6); }
+  .steps.is-pinned .steps-head h2 { font-size: var(--fs-2xl); }
   .steps.is-pinned .step-tabs {
     display: flex; gap: var(--s-2); margin-bottom: var(--s-5); padding: var(--s-1);
     background: var(--paper-2); border: 1px solid var(--line); border-radius: 999px; width: fit-content;
@@ -250,7 +290,8 @@ a { color: var(--blue-600); text-underline-offset: 3px; }
   .steps.is-pinned .step { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(16px); transition: opacity 380ms var(--ease-out), transform 380ms var(--ease-out), visibility 0s linear 380ms; }
   .steps.is-pinned .step.is-active { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
   .steps.is-pinned .step-next { display: inline-flex; }
-  .steps.is-pinned .step-visual img, .steps.is-pinned .plan { height: min(52vh, 460px); min-height: 0; }
+  .steps.is-pinned .step { padding: var(--s-7); gap: var(--s-7); }
+  .steps.is-pinned .step-visual img, .steps.is-pinned .plan { height: min(48vh, 440px); min-height: 0; }
   .steps.is-pinned .plan-bar { transform: scaleX(0); transition: transform 700ms var(--ease-out); }
   .steps.is-pinned .step.is-active .plan-bar { transform: scaleX(1); }
   .steps.is-pinned .step.is-active .plan-bar.b2 { transition-delay: 180ms; }
