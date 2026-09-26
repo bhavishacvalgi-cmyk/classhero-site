@@ -19,7 +19,7 @@ The site **promises the plan and the method, never the grade.** The result shows
 
 **Proof line**, kept apart from the promise and never in the same sentence:
 > 95% of our students have reached their target grade.
-(**CONFIRM** the base: the live site says "over 100 students", the dev draft says 112.)
+(Base confirmed 2026-09-26: 112 students.)
 
 ## Recommended hero
 
@@ -69,3 +69,16 @@ Alternatives, if Eddie prefers:
 5. Student numbers: "over 100" or 112?
 6. Subjects and exam boards covered.
 7. Consent to name any child in a testimonial (Taleen, Rosa and Mona and others). Until then, quotes are credited by role.
+
+## Answers from Bhavisha (via Eddie, 2026-09-26)
+
+| Question | Answer | On the site? |
+|---|---|---|
+| Trial lesson | £45 GCSE, £50 A-Level, 1 hour | **No prices on the site.** Say "one-hour paid lesson"; prices are covered on the free consultation |
+| 90-day plan | 2 lessons a week | Lessons a week: yes. **Price: never on the site** |
+| Format | 1-to-1 only | Yes |
+| Parent updates | Yes: an AI-generated written summary after every lesson | Yes, as "a short written summary after every lesson" |
+| Student numbers | 112 | Yes: "112 students, 95% reached their target grade" |
+| Subjects | All the major GCSE and A-Level subjects, across the main boards; Economics is Bhavisha's specialist subject | Yes |
+| Consent for children's names | TBA | Quotes stay credited by role |
+| Consultation length | not given | CONFIRM |

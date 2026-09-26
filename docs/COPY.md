@@ -15,7 +15,7 @@ Global
 - H1: **A 90-day plan to reach your target grade.**
 - Sub: Live 1-to-1 lessons built around how examiners mark. It starts with a free consultation.
 - CTA: [Book a free consultation] · secondary link: See how it works
-- Proof: **95%** of our students have reached their target grade (**CONFIRM** the base)
+- Proof: **95%** of our 112 students have reached their target grade
 - Image: Bhavisha (`bhavisha-final-cta.jpg` or `bhavisha-hallway.jpg`), caption: "Bhavisha Valgi, founder and lead tutor"
 
 ### 2. Proof strip (grade movements, straight after the hero)
@@ -44,15 +44,15 @@ Tabs: 01 Free consultation · 02 Trial lesson · 03 Your 90-day plan
 
 **02 · Week 1 · Trial lesson**
 - Title: Try a real lesson.
-- Body: If it looks like a good match, we pair the student with the right tutor for a full lesson on a topic they find hard. It's a paid lesson, so it's the real thing, and both sides can see whether it works before committing to more.
+- Body: If it looks like a good match, we pair the student with the right tutor for a one-hour lesson on a topic they find hard. It's a paid lesson, so it's the real thing, and both sides can see whether it works before committing to more.
 - Checks: Matched to the right tutor · A real topic, from their syllabus · Decide afterwards
 - Button: Next: your plan ▸
 
 **03 · Days 1-90 · Your 90-day plan**
 - Title: Follow a plan built for you.
-- Body: We map out the next 90 days around the student's exam board, exam dates and weakest topics, then work through it lesson by lesson, with homework every week. Parents see how it's going along the way.
+- Body: We map out the next 90 days around the student's exam board, exam dates and weakest topics, then work through it in two 1-to-1 lessons a week. After every lesson, parents get a short written summary of what was covered and what comes next.
 - Visual: a 12-week plan filling in (Weeks 1-4 technique and gaps · Weeks 5-8 exam questions under time · Weeks 9-12 past papers and review)
-- Checks: Built around their exams · Lessons, homework and feedback · Progress updates for parents (**CONFIRM**)
+- Checks: Two 1-to-1 lessons a week · A written summary for parents after every lesson · Homework and feedback every week
 - Small print: The plan has a 90-day minimum. Grades move when habits change, and habits take a term to stick.
 - CTA: [Book a free consultation]
 
@@ -69,8 +69,8 @@ Intro: Most students revise by re-reading their notes. It feels productive, and 
 ### 6. Meet Bhavisha
 H2: **Hi, I'm Bhavisha.**
 Body: I've been tutoring professionally for six years, for companies and privately, across KS3, GCSE and A-Level. I started tutoring full-time during COVID, when I saw how far behind some students were falling, and I kept going through my own A-Levels, university and every job since.
-I now lead a small team of tutors trained in the same method: growth mindset, exam technique and a lot of practice on real questions.
-Facts: Six years of tutoring · Sat both GCSE specifications (A*-U and 9-1), 16 GCSEs in total · 95% of students reached their target grade (**CONFIRM**)
+Economics is my specialist subject. I now lead a small team of tutors, across all the major subjects, trained in the same method: growth mindset, exam technique and a lot of practice on real questions.
+Facts: Six years of tutoring · 112 students taught, 95% reached their target grade · Sat both GCSE specifications (A*-U and 9-1), 16 GCSEs in total · Economics is her specialist subject
 Video: "Watch a short clip of a real lesson" (`bhavisha-teaching.mp4`, 52s)
 Link: More about Bhavisha →
 
@@ -93,13 +93,15 @@ Link: Read every review →
 
 ### 8. FAQ
 H2: **Questions parents ask.**
-- **What happens in the free consultation?** A video call of around 20-30 minutes (**CONFIRM**) with the student and a parent. We talk through where the student is, agree a target grade, and you meet the tutor. There's no obligation to go further.
-- **Is the trial lesson free?** No. It's a full paid lesson (price **CONFIRM**), so you see exactly what a normal lesson is like before you commit to a plan.
+- **What happens in the free consultation?** A short video call (length **CONFIRM**) with the student and a parent. We talk through where the student is, agree a target grade, and you meet the tutor. There's no obligation to go further.
+- **Is the trial lesson free?** No. It's a one-hour paid lesson, so you see exactly what a normal lesson is like before you commit to a plan. We'll go through prices on the free consultation.
+- **How much does it cost?** It depends on the level and the plan, so we talk it through on the free consultation, once we know what the student needs. There's no charge for that call.
 - **Why a 90-day minimum?** Real progress takes a term. Ninety days is long enough to learn the technique, practise it on exam questions and see it in the marks. Shorter than that, you're mostly paying for catch-up.
-- **Are lessons online?** Yes. Every lesson is live on video, so students can learn from anywhere. (**CONFIRM**: any in-person option?)
-- **Which subjects do you teach?** GCSE Maths and English, A-Level Maths and Economics, and KS3 Maths and English. (**CONFIRM**)
+- **Are lessons online?** Yes. Every lesson is live, 1-to-1, on video, so students can learn from anywhere.
+- **How will I know it's working?** After every lesson you get a short written summary: what was covered, how it went, and what's next.
+- **Which subjects do you teach?** The major GCSE and A-Level subjects, across the main exam boards. Economics is Bhavisha's specialist subject, and we match every student to a tutor who knows their subject and board.
 - **Who will teach my child?** Bhavisha or a tutor she has trained personally in the Class Hero method. We match each student in step 2.
-- **Can you promise a grade?** No honest tutor can. What we can do is build the plan, teach the technique and keep the student accountable, and 95% of our students have reached their target grade.
+- **Can you promise a grade?** No honest tutor can. What we can do is build the plan, teach the technique and keep the student accountable. So far, 95% of our 112 students have reached their target grade.
 
 ### 9. Final CTA
 H2: **Start with a free consultation.**
@@ -111,7 +113,7 @@ Button: [Book a free consultation]
 ## About (`about.html`)
 - H1: **Hi, I'm Bhavisha.** Sub: Founder and lead tutor, Class Hero
 - Story (from the live site, tightened): six years of professional tutoring for companies and privately. Started full-time during COVID, when learning gaps widened and some students fell far behind. Kept tutoring through her A-Levels, university and every job since. Now leads a team of tutors who share the method.
-- Credentials: Sat both GCSE specifications (A*-U and 9-1), 16 GCSEs · Teaches GCSE Maths and English, A-Level Maths and Economics (**CONFIRM**) · 95% of students reached their target grade (**CONFIRM**)
+- Credentials: Sat both GCSE specifications (A*-U and 9-1), 16 GCSEs · Specialist in Economics; the team covers all the major GCSE and A-Level subjects · 112 students taught, 95% reached their target grade
 - Her philosophy (a student quoted it, #11): "Nothing is ever difficult, only foreign."
 - The team: every tutor is trained in growth mindset, exam technique and the Class Hero lesson structure. "You'll work with Bhavisha or a tutor she has trained personally."
 - Video: a real lesson (`bhavisha-teaching.mp4`)
