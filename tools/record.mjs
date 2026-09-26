@@ -6,7 +6,7 @@ const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, recordV
 const p = await ctx.newPage();
 await p.goto(url, { waitUntil: 'networkidle' }); await p.waitForTimeout(2200);
 const H = await p.evaluate(() => document.documentElement.scrollHeight - innerHeight);
-const steps = 520;
+const steps = 900;
 for (let i = 1; i <= steps; i++) { await p.mouse.wheel(0, H / steps); await p.waitForTimeout(28); }
 await p.waitForTimeout(1500);
 await ctx.close(); await b.close();
