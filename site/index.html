@@ -8,8 +8,8 @@
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="fonts/sora-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/figtree-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="images/bhavisha-hallway-960.webp" as="image" type="image/webp">
+  <link rel="preload" href="fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="images/bhavisha-hero-portrait-724.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,9 +20,10 @@
 
   <header class="nav">
     <div class="wrap">
-      <a class="wordmark" href="index.html" aria-label="Class Hero, home">
-        <span class="wm-class" aria-hidden="true">CL<svg class="wm-a" viewBox="0 0 112 100"><path d="M0 100 L37 0 L63 0 L100 100 L72 100 L50 38 L28 100 Z" fill="currentColor"/><path d="M27 63 L45 80 L102 22" fill="none" stroke="var(--violet)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>SS</span>
-        <span class="wm-hero" aria-hidden="true">HERO</span>
+      <a class="logo" href="index.html" aria-label="Class Hero, home">
+        <img src="images/ch-mark.svg" width="58" height="52" alt="">
+        <span class="logo-rule" aria-hidden="true"></span>
+        <span class="logo-word" aria-hidden="true"><span class="lw-class">CLASS</span><span class="lw-hero">HERO</span></span>
       </a>
       <nav class="nav-links" aria-label="Main">
         <a href="#how-it-works">How it works</a>
@@ -37,18 +38,34 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">1-to-1 GCSE and A-Level tutoring, online</p>
-          <h1 id="hero-title">A 90-day plan to reach your target grade.<svg class="tick" aria-hidden="true" style="color:var(--violet)"><use href="#tick"/></svg></h1>
-          <p class="hero-sub">Live lessons built around how examiners mark. It starts with a free consultation.</p>
+          <p class="eyebrow">1-to-1 GCSE and A-Level tutoring</p>
+          <h1 id="hero-title">A 90-day plan to reach your target grade.</h1>
+          <p class="hero-sub">Live online lessons built around how examiners mark. It starts with a free consultation.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="book.html">Book a free consultation</a>
             <a class="btn btn-quiet" href="#how-it-works">See how it works <span class="arrow" aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
         <figure class="hero-photo">
-          <img src="images/bhavisha-hallway-960.webp" srcset="images/bhavisha-hallway-960.webp 960w, images/bhavisha-hallway-1600.webp 1600w" sizes="(min-width: 900px) 45vw, 100vw" width="960" height="640" alt="Bhavisha Valgi, smiling, in conversation with a student">
+          <div class="hero-frame">
+            <img src="images/bhavisha-hero-portrait-724.webp" width="724" height="724" alt="Bhavisha Valgi, founder and lead tutor of Class Hero">
+            <div class="float-card" aria-hidden="true">
+              <span class="fc-icon"><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-38.34-85.66a8,8,0,0,1,0,11.32l-48,48a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L116,164.69l42.34-42.35A8,8,0,0,1,169.66,122.34Z"/></svg></span>
+              <span><strong>Free consultation</strong><span>Meet your tutor before you commit</span></span>
+            </div>
+          </div>
           <figcaption>Bhavisha Valgi, founder and lead tutor</figcaption>
         </figure>
+      </div>
+    </section>
+
+    <section class="trust" aria-label="Why Class Hero">
+      <div class="wrap">
+        <ul class="trust-bar">
+          <li><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0V156.69l50.34-50.35a8,8,0,0,1,11.32,0L128,132.69,180.69,80H160a8,8,0,0,1,0-16h40a8,8,0,0,1,8,8v40a8,8,0,0,1-16,0V91.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31l-56,56V200H224A8,8,0,0,1,232,208Z"/></svg><span><strong>Proven results</strong>95% of our 112 students reached their target grade</span></li>
+          <li><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H53.39a8,8,0,0,0,7.23-4.57,48,48,0,0,1,86.76,0,8,8,0,0,0,7.23,4.57H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM80,144a24,24,0,1,1,24,24A24,24,0,0,1,80,144Zm136,56H159.43a64.39,64.39,0,0,0-28.83-26.16,40,40,0,1,0-53.2,0A64.39,64.39,0,0,0,48.57,200H40V56H216ZM56,96V80a8,8,0,0,1,8-8H192a8,8,0,0,1,8,8v96a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h8V88H72v8a8,8,0,0,1-16,0Z"/></svg><span><strong>Expert tutors</strong>Trained in exam technique and a growth mindset</span></li>
+          <li><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg><span><strong>1-to-1 support</strong>Two live lessons a week, and a summary for parents after each</span></li>
+        </ul>
       </div>
     </section>
 
@@ -123,7 +140,7 @@
                     <button class="btn btn-quiet step-next" data-go="1">Next: the trial lesson <span class="arrow" aria-hidden="true">&rarr;</span></button>
                   </div>
                 </div>
-                <div class="step-visual photo-portrait"><img src="images/bhavisha-portrait-wall-724.webp" width="724" height="1086" loading="lazy" alt="Portrait of Bhavisha Valgi"></div>
+                <div class="step-visual photo-talk"><img src="images/bhavisha-hallway-960.webp" srcset="images/bhavisha-hallway-960.webp 960w, images/bhavisha-hallway-1600.webp 1600w" sizes="(min-width: 768px) 40vw, 100vw" width="960" height="640" loading="lazy" alt="Bhavisha in conversation with a student"></div>
               </article>
 
               <article class="step" id="step-2" role="tabpanel" aria-labelledby="tab-2">
@@ -171,6 +188,22 @@
               </article>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="mission" aria-labelledby="mission-title">
+      <div class="wrap">
+        <div class="mission-band">
+          <div class="mission-copy">
+            <h2 id="mission-title">Start with a free consultation.</h2>
+            <p>A short video call with you and your child. If we're not the right fit, we'll say so.</p>
+          </div>
+          <a class="btn btn-light" href="book.html">Book a free consultation</a>
+          <ul class="mission-values">
+            <li><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M232,208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,16,0V156.69l50.34-50.35a8,8,0,0,1,11.32,0L128,132.69,180.69,80H160a8,8,0,0,1,0-16h40a8,8,0,0,1,8,8v40a8,8,0,0,1-16,0V91.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31l-56,56V200H224A8,8,0,0,1,232,208Z"/></svg>Better grades</li>
+            <li><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24ZM74.08,197.5a64,64,0,0,1,107.84,0,87.83,87.83,0,0,1-107.84,0ZM96,120a32,32,0,1,1,32,32A32,32,0,0,1,96,120Zm97.76,66.41a79.66,79.66,0,0,0-36.06-28.75,48,48,0,1,0-59.4,0,79.66,79.66,0,0,0-36.06,28.75,88,88,0,1,1,131.52,0Z"/></svg>Greater confidence</li>
+            <li><svg aria-hidden="true" class="ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>Brighter futures</li>
+          </ul>
         </div>
       </div>
     </section>

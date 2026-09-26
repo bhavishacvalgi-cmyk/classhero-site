@@ -7,39 +7,28 @@ A trust-first landing site for UK parents of GCSE and A-Level students (with the
 
 **Dials:** DESIGN_VARIANCE 6 · MOTION_INTENSITY 5 · VISUAL_DENSITY 3. Why: parents need to trust it (lower variance than an agency site), there's one signature scroll moment per page (moderate motion), and it gets generous space.
 
-## Colour: "Cobalt + Cream"
-The brand-kit hues are kept, and the values are tuned in OKLCH (`okl.py` in the session scratchpad computed every pair).
+## Round 3 (2026-09-26): the client's brand kit, used literally
+The client's feedback on round 2: not warm or professional enough, logo wrong, header and logo too small, make it more like the developer's site. Round 3 follows `brand/branding-kit-v1.png` literally, with the developer's layout patterns (white base, portrait hero with a floating card, icon tiles, a navy band).
 
-| Token | Light | Dark | Use |
-|---|---|---|---|
-| `--paper` | `#fcfaf5` | `#0e1320` | page ground (warm, not cool grey: this is where the warmth comes from) |
-| `--paper-2` | `#f5f3ee` | `#131a28` | alternate band, diagram ground |
-| `--surface` | `#fffefb` | `#171e2c` | cards |
-| `--line` | `#dedad2` | `#2a3243` | 1px borders |
-| `--ink` | `#161e2f` | `#f3f0ea` | text, warm navy |
-| `--ink-2` | `#4c5261` | `#b3b7c1` | secondary text |
-| `--blue` | `#3c82f6` | `#66a5ff` | brand blue: wordmark, large arrows, phase bar. **Large only** |
-| `--blue-600` | `#2a60d6` | `#66a5ff` | buttons, links, step numbers |
-| `--blue-700` | `#244eb5` | `#8dbcff` | hover |
-| `--violet` | `#8c5cf6` | `#af99fb` | brand violet: HERO, the tick, "%", final phase. **Large only** |
-| `--violet-600` | `#743ed8` | `#af99fb` | small violet (eyebrow, list ticks) |
+**Colour** (kit hexes; contrast on white in brackets):
+- `#0F172A` navy (ink 17.9, and the band behind the grades scene)
+- `#475569` body text (7.6)
+- `#64748B` meta text, on white only (4.8)
+- `#3B82F6` brand blue (logo, large only)
+- `#2563EB` buttons and links (5.2; white on the kit blue would only be 3.7)
+- `#8B5CF6` / `#7C3AED` violet (HERO, the eyebrow, ticks)
+- `#60A5FA` sky (links on navy, 7.0)
+- `#F5F6FA` off-white
+- `#EEF4FF` / `#F3EFFF` soft blue and violet tints for icon tiles
+- The brand gradient `#2563EB → #4F46E5 → #7C3AED` appears on the closing band (white text 5.2-6.3 across it) and as a 16% backing shape behind the hero portrait.
 
-Contrast on `--paper`: ink 16.0 · ink-2 7.5 · blue-600 5.4 (and paper on blue-600 5.4, for button text) · blue-700 7.1 · violet-600 5.9 · brand blue 3.5 and brand violet 4.1 (3:1 is enough for large text). Dark: ink 16.3 · ink-2 9.2 · blue 7.4 · violet 7.7.
+**Type:** the kit's own pairing, Sora Bold (headlines 700, logo 800) and Inter Regular (body 400-600), self-hosted. Figtree is retired.
 
-Rules:
-- Blue is the action colour and the only accent that carries meaning.
-- Violet appears only as brand moments: HERO in the wordmark, the tick, progress, "%".
-- No gradients, no glow, no keyword-in-colour headlines.
-
-## Type
-- **Sora** 600 (display, headlines; -0.025 to -0.04em tracking; line height 1.02-1.08) and 700 (wordmark only).
-- **Figtree** 400/500/600 (text; line height 1.55; measure 45-65ch).
-- Both self-hosted as woff2 in `site/fonts/`, latin subset, `font-display: swap`, preloaded. Inter is retired: it was half of why the draft looked generated.
-- **Scale** (fluid `clamp()`, exact at 390 and 1440): xs 13 · sm 15 · base 16→18 · md 18→20 · lg 21→25 · xl 24→31 · 2xl 28→39 · 3xl 32→49 · 4xl 38→64 · stat 72→128 (the 95% only). The wordmark is fixed at 22 (19 on mobile).
+**Logo:** the kit's horizontal lockup, a traced gradient mark (`site/images/ch-mark.svg`), a 1px rule, and CLASS / HERO stacked in Sora 800. The mark is 58px in an 88px nav (38px in a 72px nav on mobile). The mark was traced from the 116px raster in the kit, so **ask the client for the original vector logo**.
 
 ## Space, shape, depth
 - Spacing: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128. Sections 96 top and bottom on desktop, 64 on mobile. Gutters 24 / 40 / 64.
-- Shape: interactive elements are 12px; containers and photos are 20px; the step-tab track and diagram bars are full pills. Nothing else.
+- Shape: interactive elements are 12px, cards 20px, photos and the closing band 24px. The step tabs, eyebrow and diagram bars are full pills.
 - Depth: one tinted shadow token, used on cards and the active tab.
 
 ## The brand mark
@@ -75,7 +64,7 @@ Easing is `cubic-bezier(0.22, 1, 0.36, 1)` throughout. Only `transform`, `opacit
   "fontSizesPx": { "min390": [11, 13, 15, 16, 18, 19, 21, 24, 28, 32, 38, 72], "max1440": [13, 15, 18, 20, 22, 25, 31, 39, 49, 64, 128] },
   "fontSizeTolerancePx": 1.5,
   "maxFamilies": 2,
-  "maxWeights": 4,
+  "maxWeights": 5,
   "maxDeadGapShare": 0.45,
   "intentionalEmptySelectors": ["#how-it-works", ".steps-track", ".steps-sentinels", ".grades", ".grades-track"]
 }
