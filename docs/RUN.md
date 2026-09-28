@@ -22,8 +22,8 @@ Before go-live: work through the blocking list at the top of `CLAIMS.md` (photos
 
 | Page | What it does |
 |---|---|
-| `index.html` | The whole argument on one page. Hero (who, what, outcome, how, one CTA) · the marked exam papers (the signature scroll scene) and the 95% record · the three struggles · the three steps with the 90-day plan written out · meet Bhavisha with the lesson clip · four reviews · nine FAQs · closing CTA |
-| `about.html` | Bhavisha's story with margin notes, her motto, qualifications, the team, the lesson clip, Nitin Parmar's reference |
+| `index.html` | The whole argument on one page. Hero (who, what, outcome, how, one CTA) · the marked exam papers (the signature scroll scene) and the 95% record · the three struggles · the three steps with the 90-day plan written out · "Why I started Class Hero." (Bhavisha's story) with the lesson clip · four reviews · eight FAQs · closing CTA |
+| `about.html` | Bhavisha's story (the same text as on home) with margin notes, her motto, qualifications, the team, the lesson clip, Nitin Parmar's reference |
 | `results.html` | The 95% record, then all 24 usable reviews verbatim with a Parents / Students filter |
 | `book.html` | What happens on the call, then the inline Calendly scheduler (calendly.com/bhavishacvalgi) with a plain link fallback |
 | `privacy.html` | Placeholder, clearly marked, until the client supplies a policy |
@@ -46,7 +46,7 @@ site/
 Full detail and every contrast ratio: `DESIGN-SPEC.md`.
 
 - **Concept:** a well-made revision notebook. Faint pale-blue squared paper, a violet margin rule, navy ink type, and a violet marking pen that ticks, strikes and circles only where something is true.
-- **Colour:** blue for actions only (buttons, links, focus); violet for the pen only (ticks, circles, strikes, margin notes, the margin rule); navy ink for text; warm paper neutrals for grounds. No other hues. The blue-to-violet gradient exists only inside the logo mark.
+- **Colour:** blue for actions only (buttons, links, focus); violet for the pen only (ticks, circles, strikes, margin notes, the margin rule); navy ink for text; warm paper neutrals for grounds. The blue-to-violet gradient exists only inside the logo mark. One exception, inside the two exam papers only: the weak first attempt is marked in red (`--pen-red`, the site's only red) and the improved paper in blue (`--blue-9`), so the before → after reads in colour (DESIGN-SPEC §2).
 - **Type:** Sora 600 for headings (800 only in the CLASS/HERO wordmark), Hanken Grotesk 400/600 (and italic for quotes) for text. One modular scale, fluid between 390px and 1440px; every size on the site is a step.
 - **Space:** 4px base scale (4, 8, 12, 16, 24, 32, 48, 64, 96, 128); sections 128 / 96 / 64px padding by breakpoint. A margin column (160px on desktop) holds real annotations only.
 - **Shape:** 8px radius on controls, 2px on paper things (sheets, photos, video). One soft shadow for paper, nothing else casts one.

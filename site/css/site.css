@@ -1,4 +1,4 @@
-/* Class Hero — site styles. Tokens and rules are documented in DESIGN-SPEC.md. */
+/* Class Hero: site styles. Tokens and rules are documented in DESIGN-SPEC.md. */
 
 /* Metric-matched fallbacks: local Arial scaled to the width of each web font, so text wraps the same before and
    after the fonts arrive (no layout shift on swap). Ratios measured in Chromium, see DESIGN-SPEC.md §3. */
@@ -37,6 +37,8 @@
   --violet-6: oklch(83% 0.093 293);
   --violet-9: oklch(52.5% 0.235 293);
   --violet-11: oklch(45% 0.215 293);
+  /* red: the "before" marking pen, inside the two exam papers only (spec §2, feedback round 02) */
+  --pen-red: oklch(55% 0.2 27);
   --grid-line: rgb(209 223 242 / 0.34);   /* grid (#D1DFF2) at 34% */
   --header-bg: rgb(252 250 246);   /* paper-1, solid: at 94% the content showed through (Eddie review) */
   --logo-blue: #3B82F6;
@@ -87,6 +89,7 @@
     --ink-1: #171C33; --ink-2: #3F455C; --ink-3: #595E70;
     --blue-3: #E7F0FE; --blue-4: #D9E7FF; --blue-6: #AFCBFF; --blue-9: #1E63EA; --blue-10: #1B4ED8; --blue-11: #1D4BC0;
     --violet-3: #EFECFF; --violet-6: #C9BCFF; --violet-9: #7639E2; --violet-11: #6026BE;
+    --pen-red: #CC2827;
   }
 }
 @media (min-width: 768px) {
@@ -297,9 +300,12 @@ html:not(.js) button.menu-btn { display: none; }
 .hero__title {
   font-size: var(--step-8); line-height: 1.02; letter-spacing: -0.035em; max-width: 9.1em;
 }
-@media (min-width: 768px) { .hero__title { max-width: none; } .br-m { display: none; } }
-/* the headline breaks where we choose, so the fallback font and Sora wrap identically (no shift on font swap) */
-@media (max-width: 767px) { .br-d { display: none; } }
+@media (min-width: 768px) { .hero__title { max-width: none; } }
+/* the headline breaks where we choose, so the fallback font and Sora wrap identically (no shift on font swap):
+   "GCSE and / A-Level / tutoring." on phones, "GCSE and / A-Level tutoring." on tablets (where "GCSE and A-Level" would
+   fill the column to within 3px), "GCSE and A-Level / tutoring." from 1024px */
+@media (min-width: 768px) and (max-width: 1023px) { .br-level { display: none; } }
+@media (min-width: 1024px) { .br-and { display: none; } }
 .hero__row { display: grid; gap: var(--s-32); margin-top: var(--s-24); }
 .hero__sub { font-size: var(--step-1); line-height: 1.45; color: var(--ink-2); max-width: 20.2em; }
 .hero__sub strong { font-weight: 400; color: var(--ink-1); }
@@ -640,9 +646,12 @@ html:not(.js) button.menu-btn { display: none; }
 .paper__svg .pr { stroke: var(--rule-2); stroke-width: 1; }
 .paper__svg .pr-q { stroke: var(--ink-1); stroke-width: 1.4; }
 .paper__svg .dots { stroke: var(--rule-3); stroke-width: 1.1; stroke-dasharray: 1.2 3.2; stroke-linecap: round; }
-/* the student's biro, and the marker's violet pen */
+/* the student's biro, and the marker's pens: red marks the first attempt, blue marks the improved paper
+   (the one place blue is not an action and violet is not the pen; spec §2) */
 .paper__svg .hw { fill: none; stroke: #213261; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .paper__svg .pen { fill: none; stroke: var(--violet-9); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.paper__svg .pen--before { stroke: var(--pen-red); }
+.paper__svg .pen--after { stroke: var(--blue-9); }
 .paper__svg .pen--num { stroke-width: 2.6; }
 .paper__svg .pen--note { stroke-width: 1.9; }
 /* The markup is the finished paper (no JS, reduced motion, short screens): the first attempt is hidden and the old

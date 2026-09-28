@@ -29,9 +29,11 @@
   }
 
   /* ---------------------------------------------------------------- proof: two papers go from worse to better */
-  /* Each paper starts as the first attempt (crosses, low marks, the old total and grade). As you scroll, question by
-     question the wrong working fades, the correct working and answer are written in stroke by stroke, the cross gives
-     way to a tick and the mark goes up; then the total and grade are struck through and the new ones written.
+  /* Each paper starts as the first attempt, marked in red (crosses, low marks, the old total and grade). As you scroll,
+     question by question the wrong working fades, the correct working and answer are written in stroke by stroke, the
+     red cross gives way to a blue tick and the mark goes up; then the total and grade are struck through in blue and the
+     new ones written. A question that was right first time is re-ticked in blue over its red tick, inside the gap after
+     the question before it, so the timeline keeps its length.
      Pinned only on screens tall enough to hold a paper and its words (same query as the CSS). gsap.matchMedia reverts
      every set, tween and trigger made inside when a condition stops matching, so the static finished papers return. */
   var proof = $('#proof');
@@ -75,6 +77,19 @@
         write(strokes(q, '.post-mark'), t + 0.15, 0.12);
         return t + 0.3;
       };
+      // Right first time: the blue pen re-ticks over the red tick and re-writes the mark, and the red fades.
+      var remark = function (q, at) {
+        write(strokes(q, '.kept-tick'), at, 0.14, 'power2.out');
+        tl.to($$('.kept-pre', q), { opacity: 0, duration: 0.12, ease: 'power1.in' }, at + 0.06);
+        write(strokes(q, '.kept-mark'), at + 0.06, 0.12);
+      };
+      var mark = function (paper, t) {
+        $$('.q, .q-kept', paper).forEach(function (q) {
+          if (q.classList.contains('q-kept')) remark(q, t - 0.06);
+          else t = question(q, t) + 0.08;
+        });
+        return t;
+      };
       // The total and grade: struck through, the new ones written under the box, the grade circled.
       var result = function (paper, at) {
         var t = write(strokes(paper, '.tot-strike'), at, 0.14, 'power2.in');
@@ -89,7 +104,7 @@
 
       // paper 1: the failing paper holds for a moment, then is corrected question by question
       var t = 0.7;
-      $$('.q', p1).forEach(function (q) { t = question(q, t) + 0.08; });
+      t = mark(p1, t);
       t = result(p1, t + 0.1) + 0.45;
       // paper 2 lands on top
       tl.to(b1, { autoAlpha: 0, y: -14, filter: 'blur(4px)', duration: 0.4, ease: 'power1.in' }, t)
@@ -98,7 +113,7 @@
         .fromTo(b2, { autoAlpha: 0, y: 14, filter: 'blur(4px)' }, { autoAlpha: 1, y: 0, filter: 'blur(0px)', duration: 0.4, ease: 'power1.out' }, t + 0.45);
       // paper 2: the mixed Grade 6 paper holds, then is corrected
       t += 0.85 + 0.45;
-      $$('.q', p2).forEach(function (q) { t = question(q, t) + 0.08; });
+      t = mark(p2, t);
       t = result(p2, t + 0.1) + 0.45;
       // both papers go onto the pile; the record takes the words
       tl.to(b2, { autoAlpha: 0, y: -14, filter: 'blur(4px)', duration: 0.4, ease: 'power1.in' }, t)

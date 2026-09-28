@@ -1,12 +1,12 @@
 # Class Hero: every factual claim on the site
 
-Checked 2026-09-26 against the built pages in `site/`; updated 2026-09-28 after feedback round 01 (method section and Results grade movements removed, exam papers rebuilt as before → after). Sources: `BRIEF.md` (§0 overrides the rest), `reference/OFFER.md` (including Bhavisha's answers of 2026-09-26), `reference/COPY.md`, `reference/testimonials-verbatim.md` (quoted by entry number, e.g. #26). **CONFIRM** marks anything the client must check before launch.
+Checked 2026-09-26 against the built pages in `site/`; updated 2026-09-28 after feedback round 01 (method section and Results grade movements removed, exam papers rebuilt as before → after) and again after feedback round 02 (Bhavisha's own copy: her story, the struggles, the FAQ; see "Client facts confirmed in round 02" below). Sources: `BRIEF.md` (§0 overrides the rest), `reference/OFFER.md` (including Bhavisha's answers of 2026-09-26), `reference/COPY.md`, `reference/testimonials-verbatim.md` (quoted by entry number, e.g. #26). **CONFIRM** marks anything the client must check before launch.
 
 ## Do these first (blocking before launch)
 
 1. **CONFIRM the photos are Bhavisha.** They come from two shoots that look different: (a) `bhavisha-hallway.jpg` (home hero) and `bhavisha-final-cta.jpg` (Book page) show a woman with straight dark hair in a houndstooth jacket; (b) `bhavisha-portrait-wall.jpg` (About hero), `bhavisha-speaking.webp` (About, "presenting") and the teaching video show a woman with long, lighter, wavy hair. Every one is captioned or described as Bhavisha. If any photo is not her, swap it before launch. (`bhavisha-hero-portrait.jpg` is not used: it duplicates the About portrait.)
 2. **CONFIRM the Calendly page name.** The embedded scheduler at calendly.com/bhavishacvalgi currently shows the heading "Virtue Led Learning" and an event called "30 Minutes". Parents booking a Class Hero consultation will see that name. Rename the Calendly page to Class Hero and the event to "Free consultation" in Calendly's settings (no site change needed).
-3. **CONFIRM the consultation length.** The site deliberately says "a short video call" and never gives a length (BRIEF §0a). The Calendly event is set to 30 minutes; if that is right, "30 minutes" can be added to the Book page and FAQ.
+3. **CONFIRM the consultation length.** The site deliberately says "a short video call" and never gives a length (BRIEF §0a). The Calendly event is set to 30 minutes; if that is right, "30 minutes" can be added to the Book page.
 4. **CONFIRM a privacy policy.** `privacy.html` is a clearly marked placeholder (BRIEF §0a, §1). It lists the third parties the site loads: Calendly (Book page), jsDelivr (GSAP scripts, home page), Google Fonts (every page). A real policy is needed before launch because the site collects booking details through Calendly.
 5. **CONFIRM consent for every name** listed under "Names on the site" below.
 6. **CONFIRM cookie handling.** The site sets no cookies of its own, but the Calendly embed on the Book page does. Calendly's own consent banner is left on (the embed does not pass `hide_gdpr_banner`). The client should confirm with whoever advises them on UK GDPR/PECR whether a site-level cookie notice is also wanted.
@@ -26,7 +26,7 @@ Checked 2026-09-26 against the built pages in `site/`; updated 2026-09-28 after 
 
 | Claim | Source | Status |
 |---|---|---|
-| "1-to-1 GCSE and A-Level tutoring." | BRIEF §0a (1-to-1 only), §0c | confirmed |
+| "GCSE and A-Level tutoring." (hero headline; "1-to-1" removed from it in round 02 and still stated in the meta description, the FAQ and step 3) | BRIEF §0a (1-to-1 only), §0c; feedback round 02 §1b | confirmed |
 | "A 90-day plan to reach your target grade" | BRIEF §0b, OFFER.md | confirmed |
 | "two live online lessons a week" | BRIEF §0a | confirmed |
 | "an expert tutor who teaches exactly how examiners mark" | OFFER.md offer statement | confirmed (approved offer) |
@@ -38,20 +38,17 @@ Checked 2026-09-26 against the built pages in `site/`; updated 2026-09-28 after 
 | Paper 2 illustration: GCSE Maths Higher practice paper. Starts as a Grade 6 paper that is a mix (two answers ticked, two crossed, 6 of 10 marks on the page, total 38/80); ends with every answer on the page ticked, 38 struck and 61/80 written, the 6 struck and 8 written and circled, "in 5 weeks" | #18 | The 6, the 8 and "5 weeks" are his. Questions, working, marks and totals invented (same note as above), chosen to be consistent with a Grade 6 and a Grade 8 on one 80-mark Higher paper; Year left blank because it is unknown. Higher tier is an assumption that fits a 6 → 8 |
 | "95% of our 112 students have reached their target grade." | BRIEF §0a, OFFER.md | confirmed 2026-09-26 |
 | "Parents tell us this on the first call more than anything else." | COPY.md §3 ("the most common thing parents tell us in the first call") | approved copy |
-| The three struggles (motivation and accountability, exam technique, switched-off lessons) and what Class Hero does about each ("check in every week", "built around real exam questions") | BRIEF §3a (live site), COPY.md §3 | approved copy |
+| The three struggles, in Bhavisha's words: gaps from earlier years ("We find those gaps early and fill them"); confidence and exam nerves ("build small wins each week, and practise under exam conditions"); motivation and accountability ("check in every week", unchanged) | feedback round 02 §2 (Bhavisha's copy, used verbatim) | approved copy, client's own words |
 | Step 1, Day 1: free consultation with the student and a parent; agree a target grade and the gaps; honest fit; no obligation | BRIEF §0b | confirmed |
 | Step 2, Week 1: trial lesson, one hour, paid, matched tutor, a real topic from their syllabus, decide afterwards. No price shown | BRIEF §0b; OFFER.md answers (price internal only) | confirmed |
-| Step 3, Days 1-90: plan built around exam board, exam dates and weakest topics; two 1-to-1 lessons a week; a short written summary for parents after every lesson; homework and feedback every week | BRIEF §0a, §0b; COPY.md step 3 checks; OFFER.md method ("homework every lesson") | confirmed |
+| Step 3, Days 1-90: plan built around exam board, exam dates and weakest topics; two 1-to-1 lessons a week; a written update for parents after every lesson, on their own parent login; homework and feedback every week | BRIEF §0a, §0b; COPY.md step 3 checks; OFFER.md method ("homework every lesson"); feedback round 02 (updates live on the platform, parents have their own login) | confirmed |
 | "The plan has a 90-day minimum. Grades move when habits change, and habits take a term to stick." | BRIEF §0b; OFFER.md | confirmed |
 | The 12-week plan phases: Weeks 1-4 technique and gaps, 5-8 exam questions under time, 9-12 past papers and review; "each square is one lesson" | COPY.md step 3 visual | **CONFIRM** this is how plans are usually structured (it is drawn as a typical plan, not a promise) |
-| Meet Bhavisha: six years of professional tutoring, for tutoring companies and privately, across KS3, GCSE and A-Level | BRIEF §1 (developer draft About page), COPY.md §6 | **CONFIRM** (from the developer's draft, not restated in §0a) |
-| Started tutoring full-time during COVID; kept going through her A-Levels, university and every job since | BRIEF §1, COPY.md §6 | **CONFIRM** (same source) |
-| Economics is her specialist subject | BRIEF §0a | confirmed |
-| She leads a small team of tutors across all the major subjects, trained in her method (growth mindset, exam technique, practice on real questions) | BRIEF §0a, §1; COPY.md §6 | confirmed |
-| Sat both GCSE specifications (A*-U and 9-1), 16 GCSEs in total | BRIEF §1 (developer draft) | **CONFIRM** |
+| Home story "Why I started Class Hero." (four paragraphs; identical on About): started Class Hero at 17, during the pandemic, to help students in Wembley, where she grew up; parents were factory workers who never finished secondary school; the loss of her mum, her dad's depression, drifting apart from her sister; one of the best state schools in the country; first GCSE in Year 8; 10 A and A* grades; UKMT Maths Challenge; a LAMDA public speaking piece on homelessness; over six years tutoring in tuition centres and privately; eight months' experience in schools; studied the theory and pedagogy of teaching at the University of Warwick | Bhavisha's own text, supplied 2026-09-28 (feedback round 02 §3), used verbatim apart from curly apostrophes | confirmed by the client. "One of the best state schools in the country" is her own description and is presented as her words in a first-person story |
+| Home ticked facts: over six years of tutoring; 112 students, 95% reached their target grade; 10 A and A* grades at GCSE; specialist subject Economics | her story (round 02); BRIEF §0a | confirmed |
 | Lesson video captioned "Bhavisha teaching at the whiteboard: earning money, investments and compound interest. 52 seconds, with sound." | `assets/video/bhavisha-teaching.mp4`; the topic is read from the whiteboard in the video | **CONFIRM** what the session was. COPY.md calls it "a real lesson", but the clip is in person (lanyard, name badge) and may be a workshop rather than an online Class Hero lesson, so the caption does not call it a Class Hero lesson. Also confirm no other person in the room needs to consent |
 | Reviews on home: Jennifer (#14), Nelson (#29), GCSE Maths student after the Higher paper (#4), Niraj (#34) | testimonials file; verbatim, cuts marked "…" | confirmed real; parents shown by the first name they used on Superprof. **CONFIRM** consent (see names) |
-| FAQ: what happens on the consultation; trial lesson is one hour and paid; prices discussed on the consultation; why 90 days; lessons live 1-to-1 on video; written summary after every lesson; subjects and boards; who teaches (Bhavisha or a tutor she trained); no one can say for certain a student will reach the grade, and 95% of 112 have | COPY.md §8, BRIEF §0a-§0b | confirmed. The COPY.md question "Can you promise a grade?" was reworded to "Will my child definitely reach their target grade?" because OFFER.md bans the word "promise" |
+| FAQ (eight, in the client's order and words): cost depends on the student's current grades and needs, discussed on the free call, no charge for the call; 90 days is the time it takes for real results to show; every lesson live and 1-to-1 on our online learning platform; updates after sessions are on the platform with the parent's own login; Maths, English, Science and Economics across all exam boards, Economics her specialist subject; who teaches (Bhavisha or a tutor she trained, matched in step 2); SEN: tutors have SEND experience and use research-backed methods; no one can say for certain a student will reach the grade, and 95% of 112 have | feedback round 02 §4 (Bhavisha's answers, verbatim); BRIEF §0a-§0b for the unchanged answers | confirmed. "Will my child definitely reach their target grade?" is unchanged (COPY.md's "Can you promise a grade?" was reworded because OFFER.md bans "promise"). The qualifications question is asked but the answer still does not list tutors' qualifications: **CONFIRM** what can be said about them |
 | "A short video call, with no obligation. We agree the target grade together, and if we're not the right fit, we'll tell you." | COPY.md §9, BRIEF §0b | confirmed; length not stated (item 3) |
 
 ## About (`about.html`)
@@ -59,13 +56,13 @@ Checked 2026-09-26 against the built pages in `site/`; updated 2026-09-28 after 
 | Claim | Source | Status |
 |---|---|---|
 | "I founded Class Hero, and I'm its lead tutor. I teach GCSE and A-Level students 1-to-1, and I train the tutors who teach with me." | BRIEF §1 (founder and lead tutor; team she has trained), §0a (1-to-1 only) | confirmed |
-| Story rows (six years; COVID; A-Levels, university and jobs; Economics; team and method) | as above | **CONFIRM** the two developer-draft facts marked above |
+| Story "Why I started Class Hero.", four paragraphs, word for word the same as on home, with margin notes "At 17", "Growing up", "School", "Since then" (labels only, no new facts) | Bhavisha's own text, 2026-09-28 | confirmed by the client |
 | Motto "Nothing is ever difficult, only foreign." and "She wrote that it had 'really helped' with her anxiety" | #11 (Year 8 student): "Miss goes by the philosophy 'Nothing is ever difficult, only foreign' which has really helped me anxiety" | confirmed as her words about the motto; **CONFIRM** Bhavisha is happy for it to be presented as her motto |
-| Qualifications list (six years; both GCSE specifications, 16 GCSEs; Economics; 112 students, 95%) | BRIEF §0a, §1 | see CONFIRMs above |
-| The team is trained in a growth mindset, exam technique and the Class Hero lesson structure; covers all the major GCSE and A-Level subjects across the main exam boards; each student is matched to a tutor who knows their subject and board; "You'll work with me, or with a tutor I've trained personally." | BRIEF §0a; COPY.md About | confirmed |
+| Qualifications list: over six years of tutoring, in tuition centres and privately; eight months' experience in schools; studied the theory and pedagogy of teaching at the University of Warwick; 10 A and A* grades at GCSE; specialist subject Economics; 112 students, 95% | her story (round 02); BRIEF §0a | confirmed. Each item restates her story or §0a; nothing is added |
+| The team is trained in a growth mindset, exam technique and the Class Hero lesson structure; teaches Maths, English, Science and Economics, across all exam boards (round 02); each student is matched to a tutor who knows their subject and board; "You'll work with me, or with a tutor I've trained personally." | BRIEF §0a; COPY.md About | confirmed |
 | Photo captioned "Bhavisha presenting at an event." | `bhavisha-speaking.webp`; the testimonials file describes a live-site image as "photo of Bhavisha presenting at an event" | **CONFIRM** it is Bhavisha and the caption is right |
 | Portrait captioned "Bhavisha Valgi, founder and lead tutor" | `bhavisha-portrait-wall.jpg` | **CONFIRM** it is Bhavisha |
-| Video and "Class Hero lessons are 1-to-1 and live online, and parents get a short written summary after every one." | BRIEF §0a | confirmed (see the video CONFIRM above) |
+| Video and "Class Hero lessons are 1-to-1 and live on our online learning platform, and parents get a written update after every one, on their own parent login." | BRIEF §0a; round 02 (platform, parent login) | confirmed (see the video CONFIRM above) |
 | Reference: Nitin Parmar, "Mentor, and parent of a Maths student", excerpt from his signed reference letter | #1, verbatim with one cut marked "…" | real and signed; **CONFIRM** he is happy to be quoted by full name on the new site (the live site already shows the letter) |
 
 ## Results (`results.html`)
@@ -111,6 +108,22 @@ Credited by role instead of the first name on their review: Taleen (#26, "GCSE M
 - No phone, email, address or company number (none supplied).
 - No student portal (the developer draft's "coming soon" portal is not mentioned).
 - No consultation length (item 3).
+
+## Client facts confirmed in round 02 (Bhavisha, via Eddie, 2026-09-28)
+- **Subjects:** Maths, English, Science and Economics, all exam boards. This replaces "the major GCSE and A-Level subjects" everywhere (home FAQ, About team paragraph).
+- **Platform:** lessons happen only on Class Hero's online learning platform; parents have their own login and see the per-lesson updates there (home meta description, step 3, FAQ, About lesson line).
+- **Pricing:** depends on the student's grades; discussed on the call. Still no prices anywhere on the site.
+- **90 days:** her reason is that it is the time needed for results to show (FAQ).
+- **SEND:** tutors have SEND experience and use research-backed methods (FAQ).
+- **Her story** (home and About), supplied 2026-09-28: started at 17 in the pandemic; Wembley; first GCSE in Year 8; 10 A/A* grades; UKMT; LAMDA; over six years tutoring; eight months in schools; University of Warwick (teaching theory and pedagogy). This resolves the earlier CONFIRMs on "six years" (now "over six years", tuition centres and privately) and "started during COVID".
+- **Withdrawn:** "16 GCSEs" (and the unconfirmed "sat both GCSE specifications, A*-U and 9-1" that came with it) is gone from home, About and the About meta description; the school line is now "10 A and A* grades at GCSE".
+- **Still open:** the tutors' qualifications (the FAQ question is kept, its answer is unchanged), and consent for children's names (see "Names on the site").
+
+## Removed in feedback round 02 (2026-09-28)
+- **Home struggles:** "Exam technique." and "Lessons they've switched off from." (and their claims about breaking questions down and lessons built around real exam questions).
+- **Home FAQ:** "What happens in the free consultation?" and "Is the trial lesson free?" (the trial lesson is still described as one hour and paid in step 2). "How will I know it's working?" and "Who will teach my child?" were replaced by the client's questions.
+- **Bhavisha's developer-draft story** on home and About: "tutoring professionally for six years, for tutoring companies and privately, across KS3, GCSE and A-Level", "started tutoring full-time during COVID… kept going through my own A-Levels, university and every job since", "lead a small team of tutors across all the major subjects", "16 GCSEs in total", "sat both GCSE specifications". The team and its training are still described on About ("The team.") and in the FAQ.
+- **"A short written summary after every lesson"**, replaced by a written update on the parent's own login.
 
 ## Removed in feedback round 01 (2026-09-28)
 These claims are no longer anywhere on the site, so they need no sign-off for launch:

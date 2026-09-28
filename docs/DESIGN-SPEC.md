@@ -10,7 +10,7 @@ Written 2026-09-26, before any code. BRIEF.md §0 is the source of truth; where 
 
 **Dials** (design-taste-frontend §1): `DESIGN_VARIANCE 6` (editorial, strict grid with deliberate asymmetry, no artsy chaos: a parent must trust it), `MOTION_INTENSITY 5` (one pinned scene and a few pen-drawing moments, everything else still), `VISUAL_DENSITY 3` (airy; round 1 was rejected for sections being too close together).
 
-**Signature.** Two exam papers that go from worse to better as you scroll: each starts as the student's weak first attempt (wrong or missing working, violet crosses, low marks, the old total and grade), then the corrections are written in, crosses give way to ticks, the marks go up, and the old total and grade are struck through with the new ones written and circled. They then settle onto a stack of papers while the record (95% of 112) is stated. Second highlight: the three steps drawn down the margin, with the 90-day plan written out week by week.
+**Signature.** Two exam papers that go from worse to better as you scroll, and the story reads in colour too: each starts as the student's weak first attempt, marked in a red pen (wrong or missing working, red crosses, low marks, the old total and grade), then the corrections are written in and marked in a blue pen: crosses give way to blue ticks, the marks go up, and the old total and grade are struck through in blue with the new ones written and circled (feedback round 02). They then settle onto a stack of papers while the record (95% of 112) is stated. Second highlight: the three steps drawn down the margin, with the 90-day plan written out week by week.
 
 **What makes it only Class Hero:** the tick from the CH mark becomes the pen's tick; exam-book blue rules and a violet margin rule instead of a red one; the grades on the papers are the students' own words; Bhavisha's real photos and lesson video.
 
@@ -29,6 +29,8 @@ Written 2026-09-26, before any code. BRIEF.md §0 is the source of truth; where 
 Hues come from the kit: blue 262 (kit `#3B82F6` is oklch 62.3% 0.188 259), violet 293 (kit `#8B5CF6` is oklch 60.6% 0.219 292), navy 265-272. Warmth comes from the paper neutrals (hue 85, chroma below 0.012) and the photography, not from new hues. No other hue family exists anywhere in the UI.
 
 **Roles.** Blue = actions only (buttons, links, focus ring). Violet = the pen only (ticks, circles, strike-throughs, margin notes, the margin rule, HERO in the logo). Navy ink = all text. The blue-to-violet gradient appears once: inside the CH mark. Never on text, never as a glow, never as a band.
+
+**The one exception: the two exam papers in #proof (feedback round 02, 2026-09-28).** Inside `.paper__svg`, and nowhere else, the marking is done in two pens so the before → after story reads in colour: **red** (`pen-red`, the only red on the site) marks the weak first attempt (crosses, low per-question marks, the old totals 12/80 and 38/80, the old grades 1 and 6), and **blue** (`blue-9`) marks the improved paper (ticks, corrected marks, the new totals 44/80 and 61/80, "Pass" and "8" and their circles, "in 5 weeks", and the strike-throughs over the old totals and grades; the struck text underneath stays red). On the papers blue is the "after" pen, not an action. The student's working stays in `biro`. Violet stays the pen everywhere else: the margin rule, the step rings, the plan ticks, margin notes, the circled 95%, the About motto, the Results page. Red is used for nothing outside the papers.
 
 ### 2.1 Ramps (OKLCH, sRGB fallback in brackets)
 Radix semantics: 1-2 grounds, 3-5 interactive fills, 6-8 borders, 9-10 solids, 11-12 text.
@@ -58,7 +60,6 @@ Radix semantics: 1-2 grounds, 3-5 interactive fills, 6-8 borders, 9-10 solids, 1
 | ink-2 | 39.5% 0.040 272 | #3F455C | secondary text, intros |
 | ink-3 | 48.5% 0.030 272 | #595E70 | captions, attribution, meta |
 | biro | 33.0% 0.085 266 | #213261 | student handwriting inside the exam-paper illustrations |
-| pencil | 50.0% 0.012 270 | #60636A | the old grade written on each paper |
 
 **Blue (actions, hue 262)**
 | step | oklch | hex | use |
@@ -69,7 +70,7 @@ Radix semantics: 1-2 grounds, 3-5 interactive fills, 6-8 borders, 9-10 solids, 1
 | blue-6 | 84.0% 0.079 262 | #AFCBFF | link underline at rest |
 | blue-7 | 77.0% 0.110 262 | #8EB4FB | (reserve) |
 | blue-8 | 68.0% 0.150 260 | #5F97F4 | (reserve) |
-| blue-9 | 54.3% 0.215 262 | #1E63EA | primary button, focus ring (a touch darker than the brief's #2563EB floor) |
+| blue-9 | 54.3% 0.215 262 | #1E63EA | primary button, focus ring (a touch darker than the brief's #2563EB floor); on the exam papers only, the "after" marking pen |
 | blue-10 | 48.8% 0.217 264 | #1B4ED8 | primary button hover |
 | blue-11 | 46.0% 0.190 264 | #1D4BC0 | text links |
 | blue-12 | 28.0% 0.090 265 | #122555 | (reserve) |
@@ -90,6 +91,11 @@ Radix semantics: 1-2 grounds, 3-5 interactive fills, 6-8 borders, 9-10 solids, 1
 | violet-12 | 29.0% 0.110 293 | #301B5C | (reserve) |
 | logo violet | 60.6% 0.219 292 | #8B5CF6 | HERO in the lockup only |
 
+**Red (the "before" marking pen, hue 27; exam papers only)**
+| token | oklch | hex | use |
+|---|---|---|---|
+| pen-red | 55.0% 0.200 27 | #CC2827 | a clear marking-pen red for everything that marks the weak first attempt on the two exam papers (crosses, low marks, old totals and grades). Nowhere else on the site |
+
 ### 2.2 Every text/background pair used (WCAG 2.2, computed)
 | text | on | ratio | needs | result |
 |---|---|---|---|---|
@@ -105,6 +111,8 @@ Radix semantics: 1-2 grounds, 3-5 interactive fills, 6-8 borders, 9-10 solids, 1
 | violet-11 | violet-3 (pen wash) | 7.30 | 4.5 | AAA |
 | ink-1 | blue-3 (selected filter) | 14.63 | 4.5 | AAA |
 | violet-9 (pen strokes, graphics) | paper-0 / paper-1 / desk | 6.02 / 5.83 / 5.35 | 3.0 (1.4.11) | pass |
+| pen-red (before-pen strokes on the papers) | paper-0 (the sheet) / paper-1 / desk | 5.33 / 5.16 / 4.73 | 3.0 (1.4.11) | pass |
+| blue-9 (after-pen strokes on the papers) | paper-0 (the sheet) | 5.16 | 3.0 (1.4.11) | pass |
 | blue-9 (focus ring) | paper-1 / paper-2 | 5.00 / 4.75 | 3.0 (2.4.13) | pass |
 | rule-3 (control borders) | paper-1 | 3.50 | 3.0 | pass |
 | biro (illustration text) | paper-0 | 12.28 | n/a (decorative, described in alt) | - |
@@ -138,7 +146,7 @@ Utopia method: at 1440 the scale is base 18 × 1.25 (major third); at 390 it is 
 | 8 | 43.5 | 107 | `clamp(43.5px, 19.914px + 6.0476vw, 107px)` | home hero h1 |
 | 9 | 49 | 134 | `clamp(49px, 17.429px + 8.0952vw, 134px)` | the 95% figure |
 
-Measured: "A-Level tutoring." in Sora 600 at -0.035em is 8.07 × the font size wide, so the hero h1 sits on two lines at 107px (864px of a 1120px column) and three at 390px. Because both breaks sit close to a wrapping threshold, the headline carries explicit breaks: "1-to-1 GCSE and / A-Level tutoring." from 768px up, "1-to-1 GCSE / and A-Level / tutoring." below (`br.br-d` / `br.br-m`).
+Measured (feedback round 02, headline now "GCSE and A-Level tutoring."): "GCSE and A-Level" in Sora 600 at -0.035em is 8.63 × the font size wide and "A-Level tutoring." 8.07 ×. The headline carries explicit breaks so the fallback font and Sora always wrap the same, chosen per width band: from 1024px "GCSE and A-Level / tutoring." (924px of a 1120px column at 1440; 706 of 768 at 1024); from 768 to 1023px "GCSE and / A-Level tutoring.", because at 768 "GCSE and A-Level" would fill the 576px column to within 3px; below 768px "GCSE and / A-Level / tutoring." (`br.br-and` hidden from 1024px, `br.br-level` hidden from 768 to 1023px).
 
 ### 3.2 Font loading without layout shift
 Google Fonts with `display=swap`, plus metric-matched fallback faces built from local Arial, so text wraps the same before and after the web fonts arrive. Width ratios measured in Chromium against Arial: Sora 600 = 1.061 × Arial Bold, Hanken 400 = 1.009 × Arial, Hanken 600 = 0.947 × Arial Bold, Hanken italic = 1.017 × Arial Italic.
@@ -174,7 +182,7 @@ Weighting (design-motion-principles): Jakub primary (subtle, production polish),
 
 | moment | reason | how |
 |---|---|---|
-| Papers corrected (#proof) | storytelling: shows the result being earned, from a weak paper to a strong one | CSS sticky stage, GSAP ScrollTrigger timeline, `scrub: 0.6`. Per question: the wrong working (`.pre`) fades, the correct working and answer (`.post`, one `pathLength="1"` path per stroke) are written in stroke by stroke, the cross fades, the tick draws and the old mark cross-fades into the new one. Then the total and grade are struck, the new ones written and the grade circled. Opacity and stroke-dashoffset only |
+| Papers corrected (#proof) | storytelling: shows the result being earned, from a weak paper (red pen) to a strong one (blue pen) | CSS sticky stage, GSAP ScrollTrigger timeline, `scrub: 0.6`. Per question: the wrong working (`.pre`) fades, the correct working and answer (`.post`, one `pathLength="1"` path per stroke) are written in stroke by stroke, the red cross fades, the blue tick draws and the old red mark cross-fades into the new blue one. A question right first time (`.q-kept`, paper 2 questions 2 and 4) is re-ticked in blue over its red tick inside the gap after the question before it, so the timeline keeps its length (14.64). Then the total and grade are struck in blue, the new ones written and the grade circled. Opacity and stroke-dashoffset only |
 | Hero underline under "target grade" | hierarchy: introduces the pen before the papers | one stroke, 700ms, `--ease-pen`, 400ms after fonts load |
 | Step circles and margin line (#how-it-works) | orientation: shows where you are in the sequence | circles draw once on entry (600ms); the connecting line scrubs with scroll |
 | 90-day plan ticks | storytelling: the plan fills in lesson by lesson | 24 ticks scrubbed across the block's pass through the viewport |
@@ -211,25 +219,26 @@ Desktop means 1440 × 900 (1280 × 720 behaves the same with smaller type). Mobi
 - Mobile: 64px, mark 40px, a "Menu" button (48px target) opens a full-screen sheet on paper-1 with the links in Sora at step 4, the primary button and the tagline. Esc closes; focus is trapped and returned.
 
 ### Home
-1. **Hero** (grid ground, margin rule). Desktop: H1 "1-to-1 GCSE and A-Level tutoring." at step 8 across the main column in two lines (explicit breaks, see §3.1). Below it, a two-column row: left (cols 1-5 of the main column) the subtext at step 1, then the button with "Free video call. No obligation." beside it; right, the hallway photo of Bhavisha with a student at 3:2, bleeding to the right edge of the viewport, square-cornered, caption underneath in ink-3. A violet pen underline draws under "target grade". Mobile: H1 in three lines, subtext, button, note under the button, then the photo full-bleed at 3:2 with the caption. CTA bottom sits above 844px.
-2. **#proof, the signature** (desk ground, no grid). A 500vh track with a sticky stage under the header. Desktop: the stage uses the margin column plus 12 columns; text in cols 1-5 of the main column, papers in cols 6-12, sized by height (viewport minus header minus 96px, max 780px); the note sits under the text column. Beats, each paper going from worse to better (feedback round 01: "A Grade 1 is a fail"):
+1. **Hero** (grid ground, margin rule). Desktop: H1 "GCSE and A-Level tutoring." at step 8 across the main column in two lines (explicit breaks, see §3.1; "1-to-1" was removed from the headline in feedback round 02 because it made the headline too long, and it is not moved into the subtext). Below it, a two-column row: left (cols 1-5 of the main column) the subtext at step 1, then the button with "Free video call. No obligation." beside it; right, the hallway photo of Bhavisha with a student at 3:2, bleeding to the right edge of the viewport, square-cornered, caption underneath in ink-3. A violet pen underline draws under "target grade". Mobile: H1 in three lines ("GCSE and / A-Level / tutoring."), subtext, button, note under the button, then the photo full-bleed at 3:2 with the caption. CTA bottom sits above 844px.
+2. **#proof, the signature** (desk ground, no grid). A 500vh track with a sticky stage under the header. Desktop: the stage uses the margin column plus 12 columns; text in cols 1-5 of the main column, papers in cols 6-12, sized by height (viewport minus header minus 96px, max 780px); the note sits under the text column. Beats, each paper going from worse to better (feedback round 01: "A Grade 1 is a fail"), marked in red at the start and in blue at the end (feedback round 02, §2):
    - **Paper 1** (GCSE Maths Foundation practice paper, Paper 1 non-calculator, Year 10) with "On a Grade 1 in Year 10. Now doing A-Levels." and her quote. *Start:* a failing paper: 25% of 80 answered 3.2 from muddled, scribbled working (cross, 0/2); 3x + 7 = 22 answered 12 after subtracting instead of dividing (cross, 1/2 for 3x = 15); (x + 3)(x − 5) expanded as x² − 15 with no working (cross, 0/2); 0.35 as a fraction left blank (0/2). Total 12/80, Grade 1. *End:* the corrections written in (80 ÷ 4 = 20; x = 15 ÷ 3, 5; x² − 5x + 3x − 15, x² − 2x − 15; 35/100, 7/20), four ticks, marks 2/2/2/2; 12 struck and 44/80 written, the 1 struck and "Pass" written and circled. No grade number is ever given for the end state (she said she passed).
    - **Paper 2** (GCSE Maths Higher practice paper, Paper 2 calculator) slides on top, with "Up two grades in five weeks." and his quote. *Start:* a Grade 6 paper that is a mix: x² + 2x − 15 = 0 factorised correctly but solved with the signs flipped (cross, 1/3); the simultaneous equations right (tick, 3/3); 27^(2/3) worked as 27 × 2/3 = 18 (cross, 0/2); the nth term 4n + 1 right (tick, 2/2). Total 38/80, Grade 6. *End:* x = −5 or x = 3 and 3 × 3 × 3 = 27, 3² = 9 written in, every answer ticked; 38 struck and 61/80 written, the 6 struck and 8 written and circled, "in 5 weeks" beneath.
+   - Colour, both papers: the crosses, low marks, old totals and old grades are `pen-red`; the ticks, corrected marks, new totals, the new grade and its circle, "in 5 weeks" and the strike-throughs are `blue-9`. Paper 2's two questions that were right first time are ticked in red at the start and re-ticked in blue. The student's working stays in `biro`.
    - Totals are plausible for single 80-mark papers: about 15% is a Grade 1 on Foundation, 55% a standard pass, 48% a Grade 6 and 76% a Grade 8 on Higher. The first page carries the easier questions, so its share of marks runs higher than the total.
-   - Then both settle onto a stack of paper edges while "95% of our 112 students have reached their target grade." takes the text column. A one-line note says the papers are illustrations and the grades are the students' own words. Mobile: a paper window on top (46svh; 36svh on phones under 760px tall, where the quote also drops to step -1) over the words; tablet: 56svh so the whole paper shows. Reduced motion, no JS, or a screen under 560px tall: two static rows (paper beside its words, each in its finished after state with the old total and grade visible under their strike-throughs) then the record, no pinning.
-3. **#struggles** (grid ground). Desktop: left (cols 1-5) sticky H2 "Working hard, and the grades still aren't moving?" and the intro; right (cols 7-12) three items separated by single hairlines, each an h3 at step 2 and a paragraph. Mobile: stacked, not sticky.
+   - Then both settle onto a stack of paper edges while "95% of our 112 students have reached their target grade." takes the text column. A one-line note says the papers are illustrations and the grades are the students' own words. Mobile: a paper window on top (46svh; 36svh on phones under 760px tall, where the quote also drops to step -1) over the words; tablet: 56svh so the whole paper shows. Reduced motion, no JS, or a screen under 560px tall: two static rows (paper beside its words, each in its finished after state: blue marking, with the old total and grade visible in red under their blue strike-throughs) then the record, no pinning.
+3. **#struggles** (grid ground). Desktop: left (cols 1-5) sticky H2 "Working hard, and the grades still aren't moving?" and the intro; right (cols 7-12) three items separated by single hairlines, each an h3 at step 2 and a paragraph: "Gaps from earlier years.", "Confidence and exam nerves.", "Motivation and accountability." (feedback round 02). Mobile: stacked, not sticky.
 4. **#how-it-works** (grid ground, margin in use). Desktop: H2 across the main column. Then three steps; each has its timing in the margin ("Day 1", "Week 1", "Days 1-90") beside a pen-circled numeral on the rule, and in the main column a label, an h3 title, a paragraph (max 60ch) and three ticked checks laid in a row. The button sits in step 1. Between steps 2 and 3 a dashed rule crosses the page with the margin note "You decide here". Step 3 holds the plan: 12 week columns, two lesson cells each, ticks filling in, three phase labels beneath (Weeks 1-4, 5-8, 9-12), and the 90-day small print. Mobile: margin notes sit inline above each step title; the plan becomes three rows (one per phase) of four weeks.
-5. **#bhavisha** (follows #how-it-works directly since feedback round 01 removed the method section; the two share the squared ground and the standard 128px + 128px section rhythm, like #struggles into #how-it-works) (paper-1, grid ground). Desktop: left (cols 1-6) H2 "Hi, I'm Bhavisha.", two paragraphs, four ticked facts, a text link to About. Right (cols 8-11) the lesson video in a portrait 9:16 frame with a play button and a caption. Mobile: text, then video at 80% width centred.
+5. **#bhavisha** (follows #how-it-works directly since feedback round 01 removed the method section; the two share the squared ground and the standard 128px + 128px section rhythm, like #struggles into #how-it-works) (paper-1, grid ground). Desktop: left (cols 1-6) H2 "Why I started Class Hero." and Bhavisha's four-paragraph story (feedback round 02; the same text as the About story), four ticked facts, a text link to About. The layout is unchanged: the longer text (about 990px tall at 1440) now runs past the 9:16 video, which stays vertically centred beside it, so the pair still balances. Right (cols 8-11) the lesson video in a portrait 9:16 frame with a play button and a caption. Mobile: text, then video at 80% width centred.
 6. **#reviews** (paper-2 ground). Desktop: H2, then an asymmetric set: one featured parent quote at step 3 spanning cols 1-7, and three shorter quotes in a column on cols 9-12 with hairlines between; attribution under each; link "Read every review". Mobile: featured quote, then the three.
-7. **#faq** (paper-2). Desktop: H2 on top, then nine native `<details>` across cols 1-9, each question at step 1 with one hairline between; stacked (not a sticky split) so it does not repeat the #struggles layout family. Mobile: the same, full width.
+7. **#faq** (paper-2). Desktop: H2 on top, then eight native `<details>` (feedback round 02 list) across cols 1-9, each question at step 1 with one hairline between; stacked (not a sticky split) so it does not repeat the #struggles layout family. Mobile: the same, full width.
 8. **#start, final CTA** (grid ground). Desktop: H2 at step 5 "Start with a free consultation." (cols 1-7), the line about the short call and the button; on the right (cols 9-12) a blank "Target grade" slip, tilted 2°, with a dashed violet grade box: the thing the consultation fills in. No photo, no banner, no gradient. Mobile: stacked, slip under the button. The same block closes About and Results.
 9. **Footer** (paper-2, top hairline). Lockup (48px), tagline, links, © 2026 Class Hero, Privacy policy. Mobile: stacked.
 
 ### About
 1. **Hero:** Desktop: H1 "Hi, I'm Bhavisha." at step 5 and a lead line (cols 1-6); portrait-wall photo (2:3) at cols 8-12. Mobile: text then photo.
-2. **Story:** the main column holds the story (max 32.5em); from 1024px the margin holds short notes ("Six years", "During COVID", "Now"). Below 1024px the notes sit inline above each paragraph (the 96px tablet margin is too narrow for them).
+2. **Story:** "Why I started Class Hero." The main column holds Bhavisha's four-paragraph story, word for word the same as on home (max 32.5em); from 1024px the margin holds short notes ("At 17", "Growing up", "School", "Since then"). Below 1024px the notes sit inline above each paragraph (the 96px tablet margin is too narrow for them).
 3. **Motto:** "Nothing is ever difficult, only foreign." at step 5, pen-circled word "foreign", attribution to the Year 8 review. Full main column.
-4. **Credentials and team:** a two-column split: credentials as a ticked list (left), the team paragraphs and the presenting photo cropped to 4:3 (right).
+4. **Credentials and team:** a two-column split: credentials as a ticked list (left; six items since round 02, all restating the story or BRIEF §0a), the team paragraphs and the presenting photo cropped to 4:3 (right).
 5. **A real lesson:** the video (9:16) beside a short caption, reversed from home (video left).
 6. **Referee:** Nitin Parmar's letter excerpt as a sheet of paper-0 with his name.
 7. **CTA:** as home #start.
@@ -263,6 +272,7 @@ Real photos first. Hero: `bhavisha-hallway` (1600px source). About: `bhavisha-po
 - **FAQ restacked** (heading on top, questions across 9 columns) so it no longer repeats the struggles section's sticky split (taste-skill section-repetition rule).
 - **Browser fallbacks:** hex fallbacks for every OKLCH token (`@supports not (color: oklch(...))`); translucent colours written as plain `rgb(... / a)` instead of `color-mix()` (Safari 15.4-16.1 support OKLCH but not `color-mix`); `overflow-x: hidden` before `clip`; `100vh` before `100svh`.
 - **Motion vocabulary actually shipped:** papers (scrubbed), hero underline (once), step circles (once each), margin progress line (scrubbed), plan ticks (scrubbed, the only stagger), the About motto loop and the Results 95% loop (CSS, once each on entry), header CTA, menu, FAQ and filter state changes.
+- **Feedback round 02 (2026-09-28):** the papers are marked in two pens, red before and blue after (§2 exception, new `pen-red` token, `.pen--before` / `.pen--after` classes emitted by `_scratch/papers/build2.mjs`, `.q-kept` re-ticks in `scenes.js`; geometry and timeline length unchanged); hero headline shortened to "GCSE and A-Level tutoring." with new per-band breaks (§3.1); struggles, the #bhavisha story (now "Why I started Class Hero."), the About story and credentials, and the FAQ rewritten with Bhavisha's copy (§7). "research-backed" is kept on one line (`.nw`), like "1-to-1" and "A-Level".
 - **Feedback round 01 (2026-09-28):** nav links to 20px (§3.1 exception, §7 Header); both papers rebuilt as before → after states (§5, §7 Home.2), generated by `_scratch/papers/build2.mjs` (`.pre` first attempt, `.post` corrections, `.keep` unchanged ink); the method section, its chart, photo and CSS removed (§7 Home); the Results grade-movements section removed (§7 Results). On Results, the review filter's space is now held from the first paint when JS is on (`.js .filter[hidden]`), which keeps CLS at 0 now that the filter sits higher on the page.
 
 ## 10. Audit tokens
