@@ -1,5 +1,26 @@
 # Class Hero: QA report
 
+## 0. Feedback round 01 re-check (2026-09-28)
+
+Everything in this section was re-run on the site as it stands after feedback round 01 (headless Chromium, Playwright, served from `127.0.0.1:8124`). Scripts are in `_scratch/r2/`, screenshots in `_scratch/r2/shots/`. Sections 1-9 below are the original build's QA; where round 01 changed a result, the line is updated and marked "(round 01)".
+
+**The four changes, checked against the files and in the browser**
+
+| # | Feedback | Result | Evidence |
+|---|---|---|---|
+| 1 | Nav links clearly larger, 18-20px, weight 500-600, active underline kept, one line at 1024, mobile menu unaffected | PASS | 20px Hanken 600 (was 15px). One line at 1024, 1280 and 1440, with the header CTA shown and hidden; at 1024 the links clear the lockup by 162px and the CTA by 32px. The violet underline shows on the current page (Results) and on hover. The mobile menu is unchanged (links in Sora at 27px). `navcheck.mjs`, `shots/nav-*.png`, `shots/menu-390.png` |
+| 2 | Papers go from worse to better; Grade 1 is a fail; "Pass" is the ceiling; paper 2 goes from a mixed 6 to a nearly all-ticked 8; static fallback shows the after state with the old grade struck | PASS | Paper 1 start: 3 crosses, 1 blank, marks 0/1/0/0, 12/80, Grade 1. End: corrections written in, 4 ticks, 44/80, the 1 struck, "Pass" circled; no grade number anywhere (text scan finds no "Grade 5"). Paper 2 start: 2 ticks, 2 crosses, 6/10 on the page, 38/80, Grade 6. End: 4 ticks, 61/80, 6 struck, 8 circled, "in 5 weeks". The maths is checked by hand: every after-state answer is right, and every before-state error is a typical one (dividing by 25 for 25%, subtracting 3 instead of dividing, first × first and last × last, flipped signs on the roots, 27 × 2/3). Scene frames at 9 timeline points at 1440 and 390 (`shots/sheet-d.png`, `shots/sheet-m.png`), start and end at 768 (`shots/sheet-t.png`). Reduced motion and no-JS: first-attempt layer opacity 0, every correction stroke fully drawn, old totals and grades visible under their strikes (`static.mjs`, `shots/static-*.png`). The caption is unchanged |
+| 3 | Method section removed with its chart, techniques, photo and "social life" line; unused CSS, JS and images removed; no links to it; flow still intentional | PASS | No `#method` markup, CSS, JS or links; the notebook image is gone from `site/images` (every remaining image is referenced). The dead helper rules it used (`.cols`, `.measure`, `.margin-note`, `.btn--quiet`, `.ground-paper`, `.plan__head`, `.proof__title`) were removed too. #how-it-works now runs straight into "Hi, I'm Bhavisha." on the same squared ground with the standard 128 + 128px rhythm (64 + 64 on mobile), like #struggles into #how-it-works (`shots/junction-*.png`) |
+| 4 | Results: grade-movements section and its animation removed; intro straight into reviews; 95% kept | PASS | No grade-movements markup, CSS or JS. The page goes from the intro (with the circled 95% record) to "Every review." The stale `og:description` ("Grade movements and…") is rewritten. `shots/results-*.png` |
+
+**Re-run checks (round 01)**
+- **Audit** (`_tools/website_audit.mjs`, 1440×900 and 390×844): index, about, results, book, privacy and 404 all **CLEAN**. 0 failures, 0 unverified. The spec's audit tokens gained one size, 20px at 1440, for the nav links (DESIGN-SPEC §3.1 exception).
+- **Interaction tests** (`_scratch/r2/interact.mjs`): 25 of 25 pass (menu, focus trap, one CTA per screen, skip link, video, FAQ, results filter 24 / 11 / 8, Calendly iframe loads, links, images).
+- **Text scan:** 0 em/en dashes, no US spellings, and no banned words except "truly" inside Kaushik's verbatim review. None of the removed copy remains, and "Grade 5" appears nowhere.
+- **Vitals** (throttled phone / desktop): index LCP 1,220 / 132ms, CLS 0 / 0.002; about 864 / 100ms, CLS 0; results 636 / 120ms, CLS 0; book 712 / 104ms, CLS 0. With the grade-movements section gone, Results first measured CLS 0.002 on the throttled phone, because the review filter appeared (JS removes `hidden`) higher up the page. Its space is now held from the first paint when JS is on, and CLS is back to 0.
+- **Frame times** scrolling #proof 24px per frame: 1440: 224 frames, max 18.7ms; 390: 210 frames, max 21.6ms; 0 frames over 33ms in two runs each.
+- **Not re-checked this round:** 1280×720, the 375×667 and 844×390 phone profiles, and the Calendly embed beyond "iframe loads". Those layouts use the same paper SVG dimensions and CSS as before, so no change is expected there.
+
 2026-09-26. Everything below was checked in headless Chromium (Playwright 1.51) against the finished `site/`, served from `127.0.0.1`. The test scripts are in `_scratch/` and the audit reports in `_audit/`. Anything I could not check is listed at the end, not glossed over.
 
 ## 1. Measured audit (`_tools/website_audit.mjs`, against the tokens in DESIGN-SPEC.md §10)
@@ -38,7 +59,7 @@ Run on every page at 1440×900 and 390×844:
 Contact sheets and single frames, reviewed by eye, for every page at **1440×900, 1280×720, 768×1024 and 390×844**, plus **375×667** (iPhone SE) and **844×390** (landscape phone) for the papers scene. Fixed from the screenshots:
 
 - tablet margin notes wrapping mid-phrase ("Days 1-" / "90", "You decide here" on three lines);
-- the method photo filling a whole tablet screen, and the forgetting curve unreadable at 390px (it now bleeds to the edges with larger labels);
+- the method photo filling a whole tablet screen, and the forgetting curve unreadable at 390px (it now bleeds to the edges with larger labels) (round 01: the method section, photo and curve have since been removed);
 - "1-to-1" and "A-Level" breaking at the hyphen;
 - "You decide here" sitting inside step 3 instead of between steps 2 and 3;
 - the curve's axis label colliding with the first review tick;
@@ -48,7 +69,7 @@ Contact sheets and single frames, reviewed by eye, for every page at **1440×900
 - the pinned scene cut off in landscape (it now pins only on screens at least 560px tall);
 - the FAQ repeating the struggles layout.
 
-**Reduced motion** (`prefers-reduced-motion: reduce`, 1440 and 390): no pinning, papers side by side and fully marked, plan fully ticked, curve and every loop drawn, no transitions. **No JavaScript:** the same static final state; the video keeps native controls; every review shows; FAQ works (native `<details>`); the phone "Menu" becomes a link to the footer navigation. **Live resize across 560px of height:** the scene reverts to static and rebuilds (gsap.matchMedia).
+**Reduced motion** (`prefers-reduced-motion: reduce`, 1440 and 390): no pinning, papers side by side in their finished state with the old totals and grades struck through (round 01), plan fully ticked, every loop drawn, no transitions. **No JavaScript:** the same static final state; the video keeps native controls; every review shows; FAQ works (native `<details>`); the phone "Menu" becomes a link to the footer navigation. **Live resize across 560px of height:** the scene reverts to static and rebuilds (gsap.matchMedia).
 
 ## 4. Interaction tests (`_scratch/interact.mjs`): 25 of 25 pass
 
@@ -77,7 +98,7 @@ Mobile menu opens, sets `aria-expanded`, moves focus in, traps Tab, closes on Es
 | §0c hero: WHO and WHAT in the headline at 107px ("1-to-1 GCSE and A-Level tutoring."), OUTCOME and HOW in the first line under it (90-day plan, target grade, two live online lessons a week, expert tutor, how examiners mark), CTA with a free/no-obligation note beside it | PASS. Subtext 24 words (limit 25) |
 | §0b one CTA label everywhere, "Book a free consultation" (book.html: "Pick a time") | PASS |
 | §0b three steps with the approved content, "you only commit after the second" | PASS |
-| §0e signature: papers marked in violet pen as you scroll; Grade 1 → "Pass" (no number invented); Grade 6 → 8 in five weeks; then the 95% record | PASS |
+| §0e signature: papers marked in violet pen as you scroll; Grade 1 → "Pass" (no number invented); Grade 6 → 8 in five weeks; then the 95% record | PASS (round 01: each paper now starts weak and is corrected as you scroll; see §0) |
 | §0f logo lockup: client's mark, CLASS `#3B82F6` / HERO `#8B5CF6` in Sora 800, thin rule between; mark 60px in an 88px header | PASS |
 | §0f buttons `#2563EB` or darker | PASS: blue-9 is `#1E63EA` (luminance 0.151 vs 0.153), 5.16:1 with its label |
 | §0f-2 colour: blue, violet, navy ink on warm paper; no new hue families; nothing childish | PASS. Photos carry their own natural colour (wood, a lanyard); no UI element uses another hue |
@@ -117,8 +138,8 @@ Mobile menu opens, sets `aria-expanded`, moves focus in, traps Tab, closes on Es
 | 28 | Navigation one line, height | DEVIATION (brief): one line; 88px tall against the skill's 80px cap, because brief §0f asks for an 84-96px header after the client said the last one was too small |
 | 29 | No layout family repeated | PASS after one fix (FAQ restacked); nine home sections, eight families |
 | 30 | Bento rhythm | N/A |
-| 31 | Long lists use the right component | PASS: FAQ as an accordion; 24 reviews in two masonry columns with a filter; grade movements as marked rows |
-| 32 | Real images, no div screenshots | PASS: five real photos, the real video, one generated notebook photo |
+| 31 | Long lists use the right component | PASS: FAQ as an accordion; 24 reviews in two masonry columns with a filter (round 01: the grade-movements rows were removed) |
+| 32 | Real images, no div screenshots | PASS: five real photos and the real video (round 01: the one generated notebook photo was removed with the method section) |
 | 33 | No pills over images | PASS |
 | 34 | No decorative photo credits | PASS: captions are functional ("Bhavisha Valgi, founder and lead tutor") |
 | 35 | No version footers | PASS |
@@ -164,5 +185,6 @@ Mobile menu opens, sets `aria-expanded`, moves focus in, traps Tab, closes on Es
 ## 9. Housekeeping
 
 - The local server used for testing (`127.0.0.1:8123`, serving `site/`) is stopped at the end of the run. A different server was already listening on port 8000 from another folder (`/Users/edwinchen/Work/classhero-site/site`). It was not started by this run, so I left it alone, and nothing in this run read from it.
-- Image generation: 1 of the 8 allowed images was used (`_scratch/gen/desk-notebook.png`, cropped for the method section).
+- Image generation: 1 of the 8 allowed images was used (`_scratch/gen/desk-notebook.png`, cropped for the method section). Round 01 removed it from the site; the source stays in `_scratch/gen/`.
+- Round 01: the test server on `127.0.0.1:8124` was stopped at the end of the run.
 - All scratch work, screenshots and test scripts are in `_scratch/`; audit reports in `_audit/`.

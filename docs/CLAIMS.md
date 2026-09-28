@@ -1,6 +1,6 @@
 # Class Hero: every factual claim on the site
 
-Checked 2026-09-26 against the built pages in `site/`. Sources: `BRIEF.md` (§0 overrides the rest), `reference/OFFER.md` (including Bhavisha's answers of 2026-09-26), `reference/COPY.md`, `reference/testimonials-verbatim.md` (quoted by entry number, e.g. #26). **CONFIRM** marks anything the client must check before launch.
+Checked 2026-09-26 against the built pages in `site/`; updated 2026-09-28 after feedback round 01 (method section and Results grade movements removed, exam papers rebuilt as before → after). Sources: `BRIEF.md` (§0 overrides the rest), `reference/OFFER.md` (including Bhavisha's answers of 2026-09-26), `reference/COPY.md`, `reference/testimonials-verbatim.md` (quoted by entry number, e.g. #26). **CONFIRM** marks anything the client must check before launch.
 
 ## Do these first (blocking before launch)
 
@@ -33,9 +33,9 @@ Checked 2026-09-26 against the built pages in `site/`. Sources: `BRIEF.md` (§0 
 | "Free video call. No obligation." | BRIEF §0b (free, no obligation); COPY.md ("a relaxed video call") | confirmed |
 | Hero photo captioned "Bhavisha Valgi, founder and lead tutor" | COPY.md §1; BRIEF §1 | **CONFIRM** the photo is Bhavisha (item 1 above) |
 | Paper 1: "On a Grade 1 in Year 10. Now doing A-Levels." with her quote | #26 (student). Quote verbatim, one internal cut marked "…" | confirmed as a real review; credited by role. **CONFIRM** consent if the client wants to add her name |
-| Paper 1 illustration: GCSE Maths practice paper, "Year 10", Grade 1 struck through, "Pass" written and circled | BRIEF §0e ("she said she passed, so no number is invented") | The four questions, the working and the ticks are invented illustration content. The page says so under the scene: "The papers are illustrations. The grades and the words are the students' own." |
+| Paper 1 illustration: GCSE Maths Foundation practice paper, "Year 10". Starts as a failing paper (three wrong answers crossed, one blank, 1 of 8 marks on the page, total 12/80, Grade 1); ends corrected and ticked, 12 struck and 44/80 written, the 1 struck and "Pass" written and circled | BRIEF §0e and feedback round 01 ("A Grade 1 is a fail… 'Pass' is the ceiling of what we claim") | The Grade 1 and "Pass" are hers (#26). No grade number is shown or said for the end state. The questions, working, marks and totals (12/80, 44/80) are invented illustration content, chosen to be consistent with a Grade 1 and a standard pass on one 80-mark Foundation paper. The page says so under the scene: "The papers are illustrations. The grades and the words are the students' own." |
 | Paper 2: "Up two grades in five weeks." with his quote | #18 (student). Quote verbatim | confirmed; GCSE is implied by the 9-1 grades, not stated (#18). **CONFIRM** it was GCSE |
-| Paper 2 illustration: grade 6 struck, 8 written and circled, "in 5 weeks" | #18 | questions and working invented (same note as above); Year left blank because it is unknown |
+| Paper 2 illustration: GCSE Maths Higher practice paper. Starts as a Grade 6 paper that is a mix (two answers ticked, two crossed, 6 of 10 marks on the page, total 38/80); ends with every answer on the page ticked, 38 struck and 61/80 written, the 6 struck and 8 written and circled, "in 5 weeks" | #18 | The 6, the 8 and "5 weeks" are his. Questions, working, marks and totals invented (same note as above), chosen to be consistent with a Grade 6 and a Grade 8 on one 80-mark Higher paper; Year left blank because it is unknown. Higher tier is an assumption that fits a 6 → 8 |
 | "95% of our 112 students have reached their target grade." | BRIEF §0a, OFFER.md | confirmed 2026-09-26 |
 | "Parents tell us this on the first call more than anything else." | COPY.md §3 ("the most common thing parents tell us in the first call") | approved copy |
 | The three struggles (motivation and accountability, exam technique, switched-off lessons) and what Class Hero does about each ("check in every week", "built around real exam questions") | BRIEF §3a (live site), COPY.md §3 | approved copy |
@@ -44,11 +44,6 @@ Checked 2026-09-26 against the built pages in `site/`. Sources: `BRIEF.md` (§0 
 | Step 3, Days 1-90: plan built around exam board, exam dates and weakest topics; two 1-to-1 lessons a week; a short written summary for parents after every lesson; homework and feedback every week | BRIEF §0a, §0b; COPY.md step 3 checks; OFFER.md method ("homework every lesson") | confirmed |
 | "The plan has a 90-day minimum. Grades move when habits change, and habits take a term to stick." | BRIEF §0b; OFFER.md | confirmed |
 | The 12-week plan phases: Weeks 1-4 technique and gaps, 5-8 exam questions under time, 9-12 past papers and review; "each square is one lesson" | COPY.md step 3 visual | **CONFIRM** this is how plans are usually structured (it is drawn as a typical plan, not a promise) |
-| "Most students revise by re-reading their notes… We teach revision techniques that research shows work better" | COPY.md §5 | approved copy. The research reference is to well-established findings on retrieval practice and spacing; no study is cited on the page |
-| Active recall, blurting, spaced repetition, "think like an examiner" | BRIEF §3a (the live site names them), COPY.md §5 | confirmed method |
-| Forgetting-curve chart | COPY.md §5 caption, BRIEF §7 | illustrative; the caption says "The chart shows the idea, not measured data." |
-| "You deserve a social life and a full night's rest." | the live site (BRIEF §3a) | client's own line |
-| Notebook photo in the method section (squared notebook, maths working, violet pen) | **AI-generated** with `tools/gen-image` (no people) | Used only as atmosphere, never beside a testimonial, and not captioned as a student's work. **CONFIRM** the client is happy to use a generated image, or supply a real photo |
 | Meet Bhavisha: six years of professional tutoring, for tutoring companies and privately, across KS3, GCSE and A-Level | BRIEF §1 (developer draft About page), COPY.md §6 | **CONFIRM** (from the developer's draft, not restated in §0a) |
 | Started tutoring full-time during COVID; kept going through her A-Levels, university and every job since | BRIEF §1, COPY.md §6 | **CONFIRM** (same source) |
 | Economics is her specialist subject | BRIEF §0a | confirmed |
@@ -79,12 +74,9 @@ Checked 2026-09-26 against the built pages in `site/`. Sources: `BRIEF.md` (§0 
 |---|---|---|
 | "Every review here is real: from students, parents, family members and one referee. We've kept their words exactly as they wrote them, spelling included." | testimonials file (transcribed from the live site's screenshots) | true for the 24 reviews shown. Children's names are replaced in [brackets] and this is stated on the page |
 | 95% of our 112 students | BRIEF §0a | confirmed |
-| Grade 6 to Grade 8, GCSE Maths, five weeks, reported by the student | #18 | confirmed; GCSE implied (see above) |
-| Grade 1 to a pass, GCSE Maths, from Year 10, now studying A-Levels, reported by the student | #26 | confirmed |
-| B to A, and C to B, two Year 8 students, a month after their first paper, reported by their parent | #32 (the parent gave the grades and "A month back"; the "4 weeks" framing is Bhavisha's and is not used) | confirmed; which subject each grade is in is not stated, so none is named |
-| Grade 5 to a high Grade 7, English creative writing, one piece of work, "From a lesson report by the tutor" | #16 (tutor-reported; labelled as such) | confirmed as tutor data, never shown as a client quote |
-| 30-40% to 75%, since starting lessons, subject not stated, "From a lesson report by the tutor" | #25 (tutor-reported; labelled as such). Bhavisha's "equivalent of a Grade 8" is not used | confirmed as tutor data |
-| Underachieving to above average, Maths, in a year, reported by a parent in a Superprof review | #14 | confirmed |
+| Review label "Grade 6 to Grade 8 in five weeks" | #18 | confirmed; GCSE implied (see above) |
+| Review label "Grade 1 in Year 10, then passed GCSE Maths" | #26 | confirmed |
+| Review label "Underachieving to above average in a year" | #14 | confirmed |
 | The 24 reviews, verbatim (typos kept) | #26, #14, #18, #1, #29, #4, #34, #11, #7, #9, #24 (parent's words only), #10, #13, #35, #6, #19, #12, #28, #31 (visible text only; the original may continue past the crop), #8, #20, #30, #5, #33 | real. Not used, per the testimonials file's "Do not use" list: #2, #3, #15, #16 and #25 as quotes, #17, #21, #22 (male tutor), #23, #26's second message, #27, the results slip, and the developer draft's unverified "Brandon" and second "Simran" reviews |
 | Filter counts: 11 parent reviews, 8 student reviews, 5 others (sibling and unclear reviewers, shown under All) | the list above | computed |
 
@@ -119,3 +111,9 @@ Credited by role instead of the first name on their review: Taleen (#26, "GCSE M
 - No phone, email, address or company number (none supplied).
 - No student portal (the developer draft's "coming soon" portal is not mentioned).
 - No consultation length (item 3).
+
+## Removed in feedback round 01 (2026-09-28)
+These claims are no longer anywhere on the site, so they need no sign-off for launch:
+- **Home, method section:** the re-reading/"research shows" line, the four techniques (active recall, blurting, spaced repetition, "think like an examiner"), the forgetting-curve chart, "You deserve a social life and a full night's rest.", and the AI-generated notebook photo (so the site no longer uses any generated image).
+- **Results, grade movements:** B to A and C to B (#32), Grade 5 to a high Grade 7 (#16, tutor's lesson report), 30-40% to 75% (#25, tutor's lesson report). No tutor-reported figure appears on the site any more. #32's review was never in the review list; #18, #26 and #14 still appear there as reviews, with their own labels (above).
+- **Paper 1's old end state** (every answer ticked on a Grade 1 paper), which contradicted the story.

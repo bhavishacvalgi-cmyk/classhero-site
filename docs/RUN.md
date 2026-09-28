@@ -22,9 +22,9 @@ Before go-live: work through the blocking list at the top of `CLAIMS.md` (photos
 
 | Page | What it does |
 |---|---|
-| `index.html` | The whole argument on one page. Hero (who, what, outcome, how, one CTA) · the marked exam papers (the signature scroll scene) and the 95% record · the three struggles · the three steps with the 90-day plan written out · the method with the forgetting curve · meet Bhavisha with the lesson clip · four reviews · nine FAQs · closing CTA |
+| `index.html` | The whole argument on one page. Hero (who, what, outcome, how, one CTA) · the marked exam papers (the signature scroll scene) and the 95% record · the three struggles · the three steps with the 90-day plan written out · meet Bhavisha with the lesson clip · four reviews · nine FAQs · closing CTA |
 | `about.html` | Bhavisha's story with margin notes, her motto, qualifications, the team, the lesson clip, Nitin Parmar's reference |
-| `results.html` | The record, six grade movements marked in pen with who reported each, and all 24 usable reviews verbatim with a Parents / Students filter |
+| `results.html` | The 95% record, then all 24 usable reviews verbatim with a Parents / Students filter |
 | `book.html` | What happens on the call, then the inline Calendly scheduler (calendly.com/bhavishacvalgi) with a plain link fallback |
 | `privacy.html` | Placeholder, clearly marked, until the client supplies a policy |
 | `404.html` | Not-found page with links back |
@@ -56,6 +56,6 @@ Full detail and every contrast ratio: `DESIGN-SPEC.md`.
 
 - **Copy:** edit the HTML directly. Keep the CTA label "Book a free consultation" everywhere (it is "Pick a time" only on the Book page). Keep reviews verbatim; add any new fact to `CLAIMS.md`.
 - **Header and footer** are repeated in each HTML file. Change all six files, or edit `_scratch/partials/` and run `node _scratch/papers/inject.mjs`, which rewrites the header, footer and the generated SVG regions between the `<!-- @name -->` markers.
-- **The exam papers, pen marks, plan and forgetting curve** are static inline SVG in `index.html`, generated once by `_scratch/papers/build.mjs` and `marks.mjs` (handwriting and pen strokes are seeded, so they rebuild identically). These are optional dev-time helpers, not a build step.
+- **The exam papers, pen marks and plan** are static inline SVG in `index.html`. The papers (each with a before and an after state) come from `_scratch/papers/build2.mjs`, the pen marks and plan from `marks.mjs`, the slip from `build.mjs`; `inject.mjs` writes them into the page (handwriting and pen strokes are seeded, so they rebuild identically). These are optional dev-time helpers, not a build step.
 - **Photos:** export WebP at the sizes already used (see `srcset`) and keep `width`/`height` attributes so nothing shifts while loading.
 - **Checks:** `node _tools/website_audit.mjs http://127.0.0.1:8000/index.html --spec DESIGN-SPEC.md --out _audit` (repeat for each page) measures spacing, type scale, fonts, contrast, overflow, the hero CTA and frame times against the spec.

@@ -10,7 +10,7 @@ Written 2026-09-26, before any code. BRIEF.md §0 is the source of truth; where 
 
 **Dials** (design-taste-frontend §1): `DESIGN_VARIANCE 6` (editorial, strict grid with deliberate asymmetry, no artsy chaos: a parent must trust it), `MOTION_INTENSITY 5` (one pinned scene and a few pen-drawing moments, everything else still), `VISUAL_DENSITY 3` (airy; round 1 was rejected for sections being too close together).
 
-**Signature.** Two exam papers marked in violet pen as you scroll (old grade struck through, new grade written and circled, margin ticks drawn), which then settle onto a stack of papers while the record (95% of 112) is stated. Second highlight: the three steps drawn down the margin, with the 90-day plan written out week by week.
+**Signature.** Two exam papers that go from worse to better as you scroll: each starts as the student's weak first attempt (wrong or missing working, violet crosses, low marks, the old total and grade), then the corrections are written in, crosses give way to ticks, the marks go up, and the old total and grade are struck through with the new ones written and circled. They then settle onto a stack of papers while the record (95% of 112) is stated. Second highlight: the three steps drawn down the margin, with the 90-day plan written out week by week.
 
 **What makes it only Class Hero:** the tick from the CH mark becomes the pen's tick; exam-book blue rules and a violet margin rule instead of a red one; the grades on the papers are the students' own words; Bhavisha's real photos and lesson video.
 
@@ -121,11 +121,12 @@ Photos never carry text. The only text over a non-flat ground is none: the squar
 Two families, three weights in total (400, 600, and Sora 800 inside the logo SVG, which the audit does not count). `font: inherit` on buttons; `b, strong` set to 600; no browser-default sizes survive (no `<small>`, no default button 13.33px).
 
 ### 3.1 Modular scale, fluid between 390 and 1440
-Utopia method: at 1440 the scale is base 18 × 1.25 (major third); at 390 it is base 17 × 1.125 (major second), so display sizes grow fast on desktop and stay sane on a phone. Endpoints are rounded to half pixels. Every font-size on the site is one of these steps.
+Utopia method: at 1440 the scale is base 18 × 1.25 (major third); at 390 it is base 17 × 1.125 (major second), so display sizes grow fast on desktop and stay sane on a phone. Endpoints are rounded to half pixels. Every font-size on the site is one of these steps, with one documented exception: the desktop nav links are a fixed 20px (`--nav-size`), because at 15px and then 18px they read as too small beside the 60px mark and the 26px wordmark (feedback round 01). The nav only exists from 1024px up, so there is no mobile value.
 
 | step | 390 | 1440 | clamp() | used for |
 |---|---|---|---|---|
-| -1 | 15 | 15 | `15px` | captions, attribution, meta, nav links, labels |
+| -1 | 15 | 15 | `15px` | captions, attribution, meta, labels |
+| nav | n/a | 20 | `20px` (from 1024px) | desktop header nav links only (the exception above) |
 | 0 | 17 | 18 | `clamp(17px, 16.629px + 0.0952vw, 18px)` | body |
 | 1 | 19 | 22.5 | `clamp(19px, 17.7px + 0.3333vw, 22.5px)` | hero subtext, lead paragraphs, FAQ questions |
 | 2 | 21.5 | 28 | `clamp(21.5px, 19.086px + 0.619vw, 28px)` | h3, step titles, short quotes |
@@ -173,11 +174,10 @@ Weighting (design-motion-principles): Jakub primary (subtle, production polish),
 
 | moment | reason | how |
 |---|---|---|
-| Papers marked (#proof) | storytelling: shows the result being earned | CSS sticky stage, GSAP ScrollTrigger timeline, `scrub: 0.6`, stroke-dashoffset on `pathLength="1"` paths, transforms and opacity only |
+| Papers corrected (#proof) | storytelling: shows the result being earned, from a weak paper to a strong one | CSS sticky stage, GSAP ScrollTrigger timeline, `scrub: 0.6`. Per question: the wrong working (`.pre`) fades, the correct working and answer (`.post`, one `pathLength="1"` path per stroke) are written in stroke by stroke, the cross fades, the tick draws and the old mark cross-fades into the new one. Then the total and grade are struck, the new ones written and the grade circled. Opacity and stroke-dashoffset only |
 | Hero underline under "target grade" | hierarchy: introduces the pen before the papers | one stroke, 700ms, `--ease-pen`, 400ms after fonts load |
 | Step circles and margin line (#how-it-works) | orientation: shows where you are in the sequence | circles draw once on entry (600ms); the connecting line scrubs with scroll |
 | 90-day plan ticks | storytelling: the plan fills in lesson by lesson | 24 ticks scrubbed across the block's pass through the viewport |
-| Forgetting curve | explanation | the curve draws once on entry (2s, power1.inOut), each review tick lands as the line reaches it |
 | Header CTA in/out | state change | opacity 200ms + translateX 280ms, `--ease-out` |
 | Beat text swaps in #proof | continuity | opacity + 12px translateY + 4px blur, scrubbed |
 | Buttons | feedback | background 160ms; `:active` scale(0.98) |
@@ -191,7 +191,7 @@ Weighting (design-motion-principles): Jakub primary (subtle, production polish),
 
 **One CTA per screen.** The header button hides (opacity, 200ms, with `visibility` so it leaves the tab order) whenever another "Book a free consultation" button is on screen, watched with IntersectionObserver; the nav links slide right to close the gap. On book.html it is always hidden.
 
-**Rules.** Only transform, opacity, filter and stroke-dashoffset animate. No `window.addEventListener('scroll')`; ScrollTrigger and IntersectionObserver only. `prefers-reduced-motion: reduce` shows every final state (papers side by side and fully marked, steps and plan drawn, curve drawn) with no pinning. Without JavaScript the same static final state renders. Budget: no frame over 50ms while scrolling #proof on desktop.
+**Rules.** Only transform, opacity, filter and stroke-dashoffset animate. No `window.addEventListener('scroll')`; ScrollTrigger and IntersectionObserver only. `prefers-reduced-motion: reduce` shows every final state (papers side by side in their finished "after" state, with the old total and grade still visible under their strike-throughs so the improvement reads; steps and plan drawn) with no pinning. Without JavaScript the same static final state renders: the markup is the after state, and the first attempt (`.pre`) is hidden by CSS unless the pinned scene is running. Budget: no frame over 50ms while scrolling #proof on desktop.
 
 ## 6. Components
 
@@ -207,20 +207,23 @@ Weighting (design-motion-principles): Jakub primary (subtle, production polish),
 Desktop means 1440 × 900 (1280 × 720 behaves the same with smaller type). Mobile means 390 × 844. Tablet (768) notes where it differs.
 
 ### Header (all pages)
-- Desktop: sticky, 88px tall on paper-1 at 94% with a 1px rule-2 bottom line once scrolled. Lockup left (mark 60px). Right: How it works · Results · About (Hanken 600, step -1, 32px apart), then the primary button. The button is hidden while another booking button is on screen, and the nav links slide right to close the gap.
+- Desktop: sticky, 88px tall on paper-1 at 94% with a 1px rule-2 bottom line once scrolled. Lockup left (mark 60px). Right: How it works · Results · About (Hanken 600 at 20px, 32px apart, violet 2px underline on hover and on the current page), then the primary button. The button is hidden while another booking button is on screen, and the nav links slide right to close the gap.
 - Mobile: 64px, mark 40px, a "Menu" button (48px target) opens a full-screen sheet on paper-1 with the links in Sora at step 4, the primary button and the tagline. Esc closes; focus is trapped and returned.
 
 ### Home
 1. **Hero** (grid ground, margin rule). Desktop: H1 "1-to-1 GCSE and A-Level tutoring." at step 8 across the main column in two lines (explicit breaks, see §3.1). Below it, a two-column row: left (cols 1-5 of the main column) the subtext at step 1, then the button with "Free video call. No obligation." beside it; right, the hallway photo of Bhavisha with a student at 3:2, bleeding to the right edge of the viewport, square-cornered, caption underneath in ink-3. A violet pen underline draws under "target grade". Mobile: H1 in three lines, subtext, button, note under the button, then the photo full-bleed at 3:2 with the caption. CTA bottom sits above 844px.
-2. **#proof, the signature** (desk ground, no grid). A 420vh track with a sticky stage under the header. Desktop: the stage uses the margin column plus 12 columns; text in cols 1-5 of the main column, papers in cols 6-12, sized by height (viewport minus header minus 96px, max 780px); the note sits under the text column. Beats: Paper 1 (GCSE Maths practice paper, Year 10; ticks, grade 1 struck, "Pass" written and circled) with "On a Grade 1 in Year 10. Now doing A-Levels." and her quote; Paper 2 slides on top (ticks, 6 struck, 8 written and circled, "5 weeks" in the margin) with "Up two grades in five weeks." and his quote; both settle onto a stack of paper edges while "95% of our 112 students have reached their target grade." takes the text column. A one-line note says the papers are illustrations and the grades are the students' own words. Mobile: a paper window on top (46svh; 36svh on phones under 760px tall, where the quote also drops to step -1) over the words; tablet: 56svh so the whole paper shows. Reduced motion, no JS, or a screen under 560px tall: two static rows (paper beside its words) then the record, no pinning.
+2. **#proof, the signature** (desk ground, no grid). A 500vh track with a sticky stage under the header. Desktop: the stage uses the margin column plus 12 columns; text in cols 1-5 of the main column, papers in cols 6-12, sized by height (viewport minus header minus 96px, max 780px); the note sits under the text column. Beats, each paper going from worse to better (feedback round 01: "A Grade 1 is a fail"):
+   - **Paper 1** (GCSE Maths Foundation practice paper, Paper 1 non-calculator, Year 10) with "On a Grade 1 in Year 10. Now doing A-Levels." and her quote. *Start:* a failing paper: 25% of 80 answered 3.2 from muddled, scribbled working (cross, 0/2); 3x + 7 = 22 answered 12 after subtracting instead of dividing (cross, 1/2 for 3x = 15); (x + 3)(x − 5) expanded as x² − 15 with no working (cross, 0/2); 0.35 as a fraction left blank (0/2). Total 12/80, Grade 1. *End:* the corrections written in (80 ÷ 4 = 20; x = 15 ÷ 3, 5; x² − 5x + 3x − 15, x² − 2x − 15; 35/100, 7/20), four ticks, marks 2/2/2/2; 12 struck and 44/80 written, the 1 struck and "Pass" written and circled. No grade number is ever given for the end state (she said she passed).
+   - **Paper 2** (GCSE Maths Higher practice paper, Paper 2 calculator) slides on top, with "Up two grades in five weeks." and his quote. *Start:* a Grade 6 paper that is a mix: x² + 2x − 15 = 0 factorised correctly but solved with the signs flipped (cross, 1/3); the simultaneous equations right (tick, 3/3); 27^(2/3) worked as 27 × 2/3 = 18 (cross, 0/2); the nth term 4n + 1 right (tick, 2/2). Total 38/80, Grade 6. *End:* x = −5 or x = 3 and 3 × 3 × 3 = 27, 3² = 9 written in, every answer ticked; 38 struck and 61/80 written, the 6 struck and 8 written and circled, "in 5 weeks" beneath.
+   - Totals are plausible for single 80-mark papers: about 15% is a Grade 1 on Foundation, 55% a standard pass, 48% a Grade 6 and 76% a Grade 8 on Higher. The first page carries the easier questions, so its share of marks runs higher than the total.
+   - Then both settle onto a stack of paper edges while "95% of our 112 students have reached their target grade." takes the text column. A one-line note says the papers are illustrations and the grades are the students' own words. Mobile: a paper window on top (46svh; 36svh on phones under 760px tall, where the quote also drops to step -1) over the words; tablet: 56svh so the whole paper shows. Reduced motion, no JS, or a screen under 560px tall: two static rows (paper beside its words, each in its finished after state with the old total and grade visible under their strike-throughs) then the record, no pinning.
 3. **#struggles** (grid ground). Desktop: left (cols 1-5) sticky H2 "Working hard, and the grades still aren't moving?" and the intro; right (cols 7-12) three items separated by single hairlines, each an h3 at step 2 and a paragraph. Mobile: stacked, not sticky.
 4. **#how-it-works** (grid ground, margin in use). Desktop: H2 across the main column. Then three steps; each has its timing in the margin ("Day 1", "Week 1", "Days 1-90") beside a pen-circled numeral on the rule, and in the main column a label, an h3 title, a paragraph (max 60ch) and three ticked checks laid in a row. The button sits in step 1. Between steps 2 and 3 a dashed rule crosses the page with the margin note "You decide here". Step 3 holds the plan: 12 week columns, two lesson cells each, ticks filling in, three phase labels beneath (Weeks 1-4, 5-8, 9-12), and the 90-day small print. Mobile: margin notes sit inline above each step title; the plan becomes three rows (one per phase) of four weeks.
-5. **#method** (squared ground; ruled lines were tried and dropped because they fought the chart). Desktop: H2 and intro in the main column; a wide figure (the forgetting curve, drawn like a sketch in the notebook: ink axes, violet curve, ticks at each review, dashed "no reviews" line) with its caption; then the four techniques as a 2 × 2 text grid under one top hairline, no boxes; then the closing line at step 3. The generated notebook photo sits beside the intro (cols 9-12, 4:5) as atmosphere. Mobile: all stacked; photo after the intro at 4:3; the chart bleeds to the screen edges with larger labels; techniques one column.
-6. **#bhavisha** (paper-1, grid ground). Desktop: left (cols 1-6) H2 "Hi, I'm Bhavisha.", two paragraphs, four ticked facts, a text link to About. Right (cols 8-11) the lesson video in a portrait 9:16 frame with a play button and a caption. Mobile: text, then video at 80% width centred.
-7. **#reviews** (paper-2 ground). Desktop: H2, then an asymmetric set: one featured parent quote at step 3 spanning cols 1-7, and three shorter quotes in a column on cols 9-12 with hairlines between; attribution under each; link "Read every review". Mobile: featured quote, then the three.
-8. **#faq** (paper-2). Desktop: H2 on top, then nine native `<details>` across cols 1-9, each question at step 1 with one hairline between; stacked (not a sticky split) so it does not repeat the #struggles layout family. Mobile: the same, full width.
-9. **#start, final CTA** (grid ground). Desktop: H2 at step 5 "Start with a free consultation." (cols 1-7), the line about the short call and the button; on the right (cols 9-12) a blank "Target grade" slip, tilted 2°, with a dashed violet grade box: the thing the consultation fills in. No photo, no banner, no gradient. Mobile: stacked, slip under the button. The same block closes About and Results.
-10. **Footer** (paper-2, top hairline). Lockup (48px), tagline, links, © 2026 Class Hero, Privacy policy. Mobile: stacked.
+5. **#bhavisha** (follows #how-it-works directly since feedback round 01 removed the method section; the two share the squared ground and the standard 128px + 128px section rhythm, like #struggles into #how-it-works) (paper-1, grid ground). Desktop: left (cols 1-6) H2 "Hi, I'm Bhavisha.", two paragraphs, four ticked facts, a text link to About. Right (cols 8-11) the lesson video in a portrait 9:16 frame with a play button and a caption. Mobile: text, then video at 80% width centred.
+6. **#reviews** (paper-2 ground). Desktop: H2, then an asymmetric set: one featured parent quote at step 3 spanning cols 1-7, and three shorter quotes in a column on cols 9-12 with hairlines between; attribution under each; link "Read every review". Mobile: featured quote, then the three.
+7. **#faq** (paper-2). Desktop: H2 on top, then nine native `<details>` across cols 1-9, each question at step 1 with one hairline between; stacked (not a sticky split) so it does not repeat the #struggles layout family. Mobile: the same, full width.
+8. **#start, final CTA** (grid ground). Desktop: H2 at step 5 "Start with a free consultation." (cols 1-7), the line about the short call and the button; on the right (cols 9-12) a blank "Target grade" slip, tilted 2°, with a dashed violet grade box: the thing the consultation fills in. No photo, no banner, no gradient. Mobile: stacked, slip under the button. The same block closes About and Results.
+9. **Footer** (paper-2, top hairline). Lockup (48px), tagline, links, © 2026 Class Hero, Privacy policy. Mobile: stacked.
 
 ### About
 1. **Hero:** Desktop: H1 "Hi, I'm Bhavisha." at step 5 and a lead line (cols 1-6); portrait-wall photo (2:3) at cols 8-12. Mobile: text then photo.
@@ -233,9 +236,8 @@ Desktop means 1440 × 900 (1280 × 720 behaves the same with smaller type). Mobi
 
 ### Results
 1. **Hero:** H1 "Results, in their own words." at step 5, intro at step 1 (cols 1-8).
-2. **Grade movements:** a marked list, one row per movement: the old grade struck in violet, the new grade circled, the timeframe, who reported it (student, parent, or "from a lesson report"). Desktop rows in a 4-column table-like grid; mobile each row stacks.
-3. **Reviews:** a filter (All · Parents · Students, `aria-pressed` buttons) and a two-column masonry (CSS columns) of every usable quote, verbatim, attribution under each. Mobile: one column.
-4. **CTA.**
+2. **Reviews** (straight after the intro since feedback round 01 removed the grade-movements section; the 95% record stays beside the page title): a filter (All · Parents · Students, `aria-pressed` buttons) and a two-column masonry (CSS columns) of every usable quote, verbatim, attribution under each. Mobile: one column.
+3. **CTA.**
 
 ### Book
 1. **Hero:** H1 "Book your free consultation." at step 5, a line of detail, the three things that happen (a numbered list with pen-circled numerals), a "Pick a time" button that jumps to the scheduler; the smiling crop of Bhavisha at cols 9-12. Mobile: text, button, then photo.
@@ -248,20 +250,20 @@ Plain text pages on the same grid, clearly marked as placeholders for the client
 
 ## 8. Imagery
 
-Real photos first. Hero: `bhavisha-hallway` (1600px source). About: `bhavisha-portrait-wall`, `bhavisha-speaking` (cropped to 4:3 around her and the screen). `bhavisha-hero-portrait` is not used: it repeats the About portrait. Book: `bhavisha-final-cta`. Video poster: `bhavisha-teaching-poster`. One generated image (a squared notebook of maths working with a violet pen, no people) is used only as atmosphere in #method, never beside a testimonial and never captioned as a student's work. All exported as WebP with `width`/`height` set; below-the-fold images lazy-load.
+Real photos first. Hero: `bhavisha-hallway` (1600px source). About: `bhavisha-portrait-wall`, `bhavisha-speaking` (cropped to 4:3 around her and the screen). `bhavisha-hero-portrait` is not used: it repeats the About portrait. Book: `bhavisha-final-cta`. Video poster: `bhavisha-teaching-poster`. No generated image is used any more: the one generated notebook photo lived only in #method, which was removed in feedback round 01. All exported as WebP with `width`/`height` set; below-the-fold images lazy-load.
 
 ## 9. Build notes (what changed from the plan, and why)
 - **CLS fix:** metric-matched fallback fonts, `em` measures and explicit hero breaks (§3.1-3.2). Before: CLS 0.145 on a throttled phone, from the hero headline re-wrapping when Sora arrived.
 - **Pin gating:** the papers scene pins only on screens at least 560px tall (§5), after a landscape-phone check showed the words cut off.
 - **Header CTA hand-off** instead of a permanently visible header button (brief §0g: one CTA per screen).
 - **The proof note** is placed inside the text column in pinned mode; it had inherited a static-layout grid column and ran into the paper stack.
-- **Method** uses the squared ground, not ruled lines (§7.5).
 - **Closing CTA** gained the blank target-grade slip (§7.9) so the final screen is not type alone, without repeating the hero photo.
 - **Story notes** move inline below 1024px (§7 About.2).
 - **Attributions:** students and reviewers who may be children are credited by role, parents by the first name on their review (BRIEF §0a; details in CLAIMS.md).
 - **FAQ restacked** (heading on top, questions across 9 columns) so it no longer repeats the struggles section's sticky split (taste-skill section-repetition rule).
 - **Browser fallbacks:** hex fallbacks for every OKLCH token (`@supports not (color: oklch(...))`); translucent colours written as plain `rgb(... / a)` instead of `color-mix()` (Safari 15.4-16.1 support OKLCH but not `color-mix`); `overflow-x: hidden` before `clip`; `100vh` before `100svh`.
-- **Motion vocabulary actually shipped:** papers (scrubbed), hero underline (once), step circles (once each), margin progress line (scrubbed), plan ticks (scrubbed, the only stagger), forgetting curve (once), About motto and Results marks (CSS, once each on entry), header CTA, menu, FAQ and filter state changes.
+- **Motion vocabulary actually shipped:** papers (scrubbed), hero underline (once), step circles (once each), margin progress line (scrubbed), plan ticks (scrubbed, the only stagger), the About motto loop and the Results 95% loop (CSS, once each on entry), header CTA, menu, FAQ and filter state changes.
+- **Feedback round 01 (2026-09-28):** nav links to 20px (§3.1 exception, §7 Header); both papers rebuilt as before → after states (§5, §7 Home.2), generated by `_scratch/papers/build2.mjs` (`.pre` first attempt, `.post` corrections, `.keep` unchanged ink); the method section, its chart, photo and CSS removed (§7 Home); the Results grade-movements section removed (§7 Results). On Results, the review filter's space is now held from the first paint when JS is on (`.js .filter[hidden]`), which keeps CLS at 0 now that the filter sits higher on the page.
 
 ## 10. Audit tokens
 
@@ -269,7 +271,7 @@ Real photos first. Hero: `bhavisha-hallway` (1600px source). About: `bhavisha-po
 {
   "spacing": [0, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128],
   "fontSizesPx": {
-    "max1440": [15, 18, 22.5, 28, 35, 44, 55, 68.5, 86, 107, 134],
+    "max1440": [15, 18, 20, 22.5, 28, 35, 44, 55, 68.5, 86, 107, 134],
     "min390": [15, 17, 19, 21.5, 24, 27, 30.5, 34.5, 39, 43.5, 49]
   },
   "fontSizeTolerancePx": 1,
